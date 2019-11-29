@@ -1,17 +1,21 @@
 {
   "name": "battbox",
+  "homepage": "https://chlenc.github.io/battbox-franchise/",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js --env",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/react-dom": "^16.9.4",
+    "gh-pages": "^2.1.1",
     "react": "^16.12.0"
   },
   "devDependencies": {
