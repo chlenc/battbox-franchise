@@ -1,21 +1,35 @@
 /** @jsx jsx */
 import React, { FC, Fragment } from "react";
 import { css, jsx } from "@emotion/core";
+import { bounce } from "@src/layout/Homepage/Waves";
 
 const b1 = css`
 position: absolute;
 top: 50vh;
 right: 10vw;
+animation: ${bounce} 5s ease infinite;
+//@media(max-width: 375px){
+//bottom: -1vw;
+//}
+
 `;
 const b2 = css`
 position: absolute;
 top: 75vh;
 left: 20vw;
+animation: ${bounce} 6s ease infinite;
+//@media(max-width: 375px){
+//bottom: -1vw;
+//}
 `;
 const b3 = css`
 position: absolute;
 top: 60vh;
 right: 20vw;
+animation: ${bounce} 4s ease infinite;
+//@media(max-width: 375px){
+//bottom: -1vw;
+//}
 `;
 
 const Bubbles: FC = () => <Fragment>

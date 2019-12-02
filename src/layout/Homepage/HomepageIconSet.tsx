@@ -4,7 +4,7 @@ import { colors } from "@src/vars";
 
 const Root = styled.div`
 height: 600px;
-width: 100vw;
+//width: 100vw;
 background: ${colors.aqua};
 `
 
