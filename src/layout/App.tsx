@@ -6,10 +6,10 @@ export default class App extends React.Component {
 
     render() {
 
-        return <>
+        return <div>
             <Homepage/>
             <HomepageIconSet/>
 
-        </>;
+        </div>;
     }
 }

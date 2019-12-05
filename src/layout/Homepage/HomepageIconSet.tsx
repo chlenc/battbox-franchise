@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { colors } from "@src/vars";
 
 const Root = styled.div`
-height: 600px;
+height: 1200px;
 //width: 100vw;
 background: ${colors.aqua};
 `

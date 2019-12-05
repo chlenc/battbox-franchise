@@ -5,6 +5,16 @@ import { css, jsx } from "@emotion/core";
 const rootStyle = css`
 width: 158px;
 height: 68px;
+
+@media (max-width: 1280px) {
+    width: 106px;
+    height: 45px;
+}
+
+@media (max-width: 768px) {
+    width: 80px;
+    height: auto;
+}
 `
 
 const Battery = () => <svg css={rootStyle} width="158" height="68" viewBox="0 0 158 68" fill="none" xmlns="http://www.w3.org/2000/svg">
