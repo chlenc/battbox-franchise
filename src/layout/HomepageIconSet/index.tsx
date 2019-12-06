@@ -27,6 +27,8 @@ ${fonts.gotham_black_22_medium};
 `
 
 const Icon = styled.div`
+display: flex;
+justify-content: center;
 svg{
 width: 300px;
 height: 163.56px;
@@ -44,6 +46,7 @@ margin-bottom: 12px;
     height: 60px;
   }
 }
+}
 `
 
 const IconHolder = styled.div`
@@ -56,6 +59,9 @@ flex-wrap: wrap;
 }
 & > * {
   margin: 0;
+}
+@media (max-width: 768px){
+   & > * {flex: 1 35%;}
 }
 `
 
@@ -78,7 +84,11 @@ ${fonts.roboto_black_30};
 
 `
 
-const IconWrapperRoot = styled.div`padding-bottom: 28px`
+const IconWrapperRoot = styled.div`
+padding-bottom: 28px;
+@media (max-width: 768px){padding: 0 5% 28px 5%};
+
+`
 
 const IconWrapper: FunctionComponent<{ title: string, subtitle: string }> = ({title, subtitle, children: icon}) =>
     <IconWrapperRoot>
