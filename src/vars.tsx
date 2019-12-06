@@ -35,35 +35,32 @@ export const colors = {
     bgDark: '#1A1A1A',
 };
 
-const gotham = css`
-font-family: GothamPro;
+const fontTemplate = css`
 font-style: normal;
 font-weight: normal;
 text-align: center;
+z-index: 2;
+`;
+
+const gotham = css`
+font-family: GothamPro;
+${fontTemplate};
 `;
 export const gotham_medium = css`
 font-family: GothamPro-Medium;
-font-style: normal;
-font-weight: normal;
-text-align: center;
+${fontTemplate};
 `;
 export const gotham_bold = css`
 font-family: GothamPro-Bold;
-font-style: normal;
-font-weight: normal;
-text-align: center;
+${fontTemplate};
 `;
 export const gotham_light = css`
 font-family: GothamPro-Light;
-font-style: normal;
-font-weight: normal;
-text-align: center;
+${fontTemplate};
 `;
 export const roboto = css`
 font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-text-align: center;
+${fontTemplate};
 `;
 
 

@@ -22,7 +22,6 @@ ${fonts.gotham_black_32_medium};
 }
 @media (max-width: 768px){
 ${fonts.gotham_black_22_medium};
-width: 280px;
 }
 
 `
@@ -93,6 +92,11 @@ ${fonts.roboto_black_30};
 
 `
 
+const Sep = styled.br`
+display: none;
+@media (max-width: 768px){display: block}
+`
+
 const IconWrapper: FunctionComponent<{ title: string, subtitle: string }> = ({title, subtitle, children: icon}) =>
     <div>
         <Icon>{icon}</Icon>
@@ -101,7 +105,7 @@ const IconWrapper: FunctionComponent<{ title: string, subtitle: string }> = ({ti
     </div>
 
 const HomepageIconSet: FC = () => <Root>
-    <Title>Крупнейшая сеть пауршеринга в России</Title>
+    <Title>Крупнейшая сеть <Sep/> пауршеринга в России</Title>
     <IconHolder>{icons.map(({title, subtitle, icon}, key) =>
         <IconWrapper key={key} title={title} subtitle={subtitle} children={icon}/>)}</IconHolder>
 </Root>
