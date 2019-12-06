@@ -22,6 +22,7 @@ ${fonts.gotham_black_32_medium};
 }
 @media (max-width: 768px){
 ${fonts.gotham_black_22_medium};
+width: 280px;
 }
 
 `
