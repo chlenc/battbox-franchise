@@ -31,6 +31,9 @@ b{
     ${fonts.gotham_white_34};
     margin: 150px 0 10px 0 ;
 }
+@media (max-width: 375px) {
+font-size: 24px;
+}
 
 `
 const SubTitle = styled.h2`

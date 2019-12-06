@@ -46,7 +46,7 @@ margin-bottom: 12px;
     height: 60px;
   }
 }
-}
+
 `
 
 const IconHolder = styled.div`
@@ -54,21 +54,29 @@ display: flex;
 align-items: center;
 justify-content: center;
 flex-wrap: wrap;
+
 & > * {
-  margin: 0 20px;
+  margin-right: 40px;
+  padding-bottom: 28px;
+  @media (max-width: 900px){margin-right: 20px;}
 }
-& > * {
-  margin: 0;
+
+& > :last-child{
+  margin-right: 0;
 }
+
 @media (max-width: 768px){
-   & > * {flex: 1 35%;}
+  padding: 0 20%;
+   & > * {
+   margin: 0;
+   flex: 1 35%;
+   }
 }
+
+@media (max-width: 440px){padding: 0 10%;}
+@media (max-width: 330px){padding: 0 5%;}
 `
 
-const IconHolderRoot = styled.div`
-//display: flex;
-//flex-direction: column;
-`
 
 const ItemTitle = styled.div`
 ${fonts.roboto_black_30_bold};
@@ -84,18 +92,12 @@ ${fonts.roboto_black_30};
 
 `
 
-const IconWrapperRoot = styled.div`
-padding-bottom: 28px;
-@media (max-width: 768px){padding: 0 5% 28px 5%};
-
-`
-
 const IconWrapper: FunctionComponent<{ title: string, subtitle: string }> = ({title, subtitle, children: icon}) =>
-    <IconWrapperRoot>
+    <div>
         <Icon>{icon}</Icon>
         <ItemTitle>{title}</ItemTitle>
         <ItemSubTitle>{subtitle}</ItemSubTitle>
-    </IconWrapperRoot>
+    </div>
 
 const HomepageIconSet: FC = () => <Root>
     <Title>Крупнейшая сеть пауршеринга в России</Title>
