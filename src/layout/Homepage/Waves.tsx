@@ -14,10 +14,6 @@ position: absolute;
 bottom: 0;
 left: 0;
 right: 0;
-
-@media(max-width: 1280px){
-bottom: -1vw;
-}
 `;
 
 

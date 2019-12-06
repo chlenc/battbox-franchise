@@ -9,10 +9,14 @@ import device from "current-device";
 
 const Root = styled.div`
 background-color: ${colors.bgDark};
-height: 100vh;
+height: 1080px;
+@media (max-width: 1280px) {height: 820px;}
+@media (max-width: 768px) {height: 670px;}
 display: flex;
 flex-direction: column;
 align-items: center;
+position:relative; 
+
 `
 
 const Title = styled.h1`
