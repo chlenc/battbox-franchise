@@ -30,7 +30,7 @@ module.exports = (env, argv) => {
         output: {
             filename:'[name].[hash].bundle.js',
             // chunkFilename: '[name].[chunkhash].bundle.js',
-            publicPath: '/',
+            publicPath: '',
             path: outputPath,
             pathinfo: false
         },
@@ -67,6 +67,11 @@ module.exports = (env, argv) => {
                 {
                     test: /\.(png|jpg|svg|gif)$/,
                     loader: "url-loader?limit=1000&name=assets/img/[name].[ext]",
+                },
+                {
+                    test: /\.(eot|ttf|woff|woff2)$/,
+                    exclude: /node_modules/,
+                    loader: "file-loader"
                 },
                 {
                     test: /\.(tsx|ts)?$/,
