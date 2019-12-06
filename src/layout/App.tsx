@@ -1,6 +1,6 @@
 import React from 'react'
 import Homepage from "@src/layout/Homepage";
-import HomepageIconSet from "@src/layout/Homepage/HomepageIconSet";
+import HomepageIconSet from "@src/layout/HomepageIconSet";
 
 export default class App extends React.Component {
 
@@ -8,7 +8,6 @@ export default class App extends React.Component {
         return <div>
             <Homepage/>
             <HomepageIconSet/>
-
         </div>;
     }
 }

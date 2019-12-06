@@ -39,26 +39,31 @@ const gotham = css`
 font-family: GothamPro;
 font-style: normal;
 font-weight: normal;
+text-align: center;
 `;
 export const gotham_medium = css`
 font-family: GothamPro-Medium;
 font-style: normal;
 font-weight: normal;
+text-align: center;
 `;
 export const gotham_bold = css`
 font-family: GothamPro-Bold;
 font-style: normal;
 font-weight: normal;
+text-align: center;
 `;
 export const gotham_light = css`
 font-family: GothamPro-Light;
 font-style: normal;
 font-weight: normal;
+text-align: center;
 `;
 export const roboto = css`
 font-family: Roboto;
 font-style: normal;
 font-weight: normal;
+text-align: center;
 `;
 
 
@@ -67,29 +72,41 @@ export const fonts = {
   ${gotham_light};
   font-size: 120px;
   line-height: 146px;
-  text-align: center;
   color: ${colors.white};
 `,
     gotham_white_72: css`
     ${gotham_light};
     font-size: 72px;
     line-height: 88px;
-    text-align: center;
-  color: ${colors.white};
+    color: ${colors.white};
 `,
     gotham_white_34: css`
     ${gotham_light};
     font-size: 34px;
     line-height: 41px;
-    text-align: center;
-  color: ${colors.white};
+    color: ${colors.white};
 `,
-    gotham_black_45_bold: css`
-  ${gotham_bold};
-  font-weight: 900;
+    gotham_black_45_medium: css`
+  ${gotham_medium};
+  font-weight: bold;
   font-size: 45px;
   line-height: 55px;
-  text-align: center;
+  color: ${colors.black};
+
+`,
+    gotham_black_32_medium: css`
+  ${gotham_medium};
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 39px;
+  color: ${colors.black};
+
+`,
+    gotham_black_22_medium: css`
+  ${gotham_medium};
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 27px;
   color: ${colors.black};
 
 `,
@@ -99,22 +116,61 @@ export const fonts = {
   ${roboto};
   font-size: 55px;
   line-height: 64px;
-  text-align: center;
   color: ${colors.white};
 `,
     roboto_white_36: css`
   ${roboto};
   font-size: 36px;
   line-height: 42px;
-  text-align: center;
   color: ${colors.white};
 `,
     roboto_white_20: css`
   ${roboto};
   font-size: 20px;
   line-height: 23px;
-  text-align: center;
   color: ${colors.white};
+`,
+    roboto_black_30: css`
+  ${roboto};
+  font-size: 30px;
+  line-height: 35px;
+  font-weight: 300;
+  color: ${colors.black};
+`,
+    roboto_black_30_bold: css`
+  ${roboto};
+  font-size: 30px;
+  line-height: 35px;
+  font-weight: 500;
+  color: ${colors.black};
+`,
+    roboto_black_22: css`
+  ${roboto};
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 300;
+  color: ${colors.black};
+`,
+    roboto_black_22_bold: css`
+  ${roboto};
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 26px;
+  color: ${colors.black};
+`,
+    roboto_black_18: css`
+  ${roboto};
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 300;
+  color: ${colors.black};
+`,
+    roboto_black_18_bold: css`
+  ${roboto};
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 500;
+  color: ${colors.black};
 `
 
 }
