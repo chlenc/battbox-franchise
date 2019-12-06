@@ -5,43 +5,43 @@ import { bounce } from "@src/layout/Homepage/Waves";
 
 const b1 = css`
 position: absolute;
-top: 50vh;
+bottom: 50vh;
 right: 10vw;
 animation: ${bounce} 5s ease infinite;
 
 @media(max-width: 1280px){
-  top: 40vh;
+  bottom: 60vh;
   right: 10vw;
 }
 
 @media(max-width: 768px){
-  top: 55vh;
+  bottom: 45vh;
 }
 
 `;
 const b2 = css`
 position: absolute;
-top: 75vh;
+bottom: 35vh;
 left: 20vw;
 animation: ${bounce} 6s ease infinite;
 
 @media(max-width: 1280px){
-  top: 70vh;
+  bottom: 30vh;
   right: 10vw;
 }
 
 @media(max-width: 768px){
-   top: 53vh;
+   background: 47vh;
 }
 `;
 const b3 = css`
 position: absolute;
-top: 60vh;
+bottom: 40vh;
 right: 20vw;
 animation: ${bounce} 4s ease infinite;
 
 @media(max-width: 768px){
-  top: 80vh;
+  bottom: 30vh;
 }
 `;
 
