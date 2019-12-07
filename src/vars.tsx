@@ -29,6 +29,7 @@ injectGlobal`
 export const colors = {
     white: '#FFFFFF',
     black: '#000000',
+    gray: '#A2A2A2',
     aqua: '#15E9E9',
     aquaDisabled: '#10B8B8',
     disabld: '#F3F3F3',
@@ -153,6 +154,12 @@ export const fonts = {
   font-size: 22px;
   font-weight: 500;
   line-height: 26px;
+  color: ${colors.black};
+`,
+    roboto_black_20: css`
+  ${roboto};
+  font-size: 20px;
+  line-height: 23px;
   color: ${colors.black};
 `,
     roboto_black_18: css`

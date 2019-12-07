@@ -2,19 +2,21 @@ import React, { FC, FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { colors, fonts } from "@src/vars";
 import { css } from "emotion";
+import ContactInputs from "@src/layout/GetContactsField/ContactInputs";
+import { icons } from "@src/layout/GetContactsField/Icons";
 
 const Root = styled.div`
-padding: 20px 0;
 background: ${colors.white};
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+padding-bottom: 36px;
 
 `
 const Title = styled.div`
 ${fonts.gotham_black_45_medium};
-padding-bottom: 56px;
+padding: 80px 0 30px 0;
 
 @media (max-width: 1280px){
 ${fonts.gotham_black_32_medium};
@@ -28,28 +30,34 @@ const IconHolder = styled.div`
 display: flex;
 align-items: center;
 justify-content: center;
-flex-wrap: wrap;
-
+margin-bottom: 112px;
 & > * {
-  margin-right: 40px;
-  padding-bottom: 28px;
-  @media (max-width: 900px){margin-right: 20px;}
+margin-right: 150px;
+}
+
+@media (max-width: 1400px){  
+  & > * {
+    margin-right: 60px;
+  };
+}
+@media (max-width: 1100px){  
+  & > * {
+    margin-right: 0px;
+  };
 }
 
 & > :last-child{
   margin-right: 0;
 }
 
-@media (max-width: 768px){
-  padding: 0 20%;
-   & > * {
-   margin: 0;
-   flex: 1 35%;
-   }
+@media (max-width: 950px){//todo fix
+flex-direction: column;
+margin-bottom: 26px;
+ & > * {
+ margin: 70px 0 50px 0;
+ flex: 1
+ }
 }
-
-@media (max-width: 440px){padding: 0 10%;}
-@media (max-width: 330px){padding: 0 5%;}
 `
 
 const ItemSubTitle = styled.div`
@@ -59,34 +67,31 @@ ${fonts.roboto_black_30};
 
 `
 
+const iconStyle = css`
+height: 110px;
+@media (max-width: 1280px){height: 76px}
+`;
 
-
-const ContactInputs = () => <div></div>
-
-const powerStyle = css`
-position:absolute;
-width: 76px;
-height: 93px;
-`
-const Power = () => <svg css={powerStyle} width="90" height="110" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M75.588 0H33.4689C33.3214 0 33.1901 0.0746486 33.1414 0.186112L0.0197076 76.0561C-0.0591147 76.2366 0.108319 76.4254 0.347258 76.4254H32.7663C32.9957 76.4254 33.162 76.6004 33.1007 76.7774L21.7123 109.647C21.6138 109.931 22.0643 110.126 22.3075 109.904L89.9132 48.2268C90.1099 48.0473 89.9507 47.7659 89.6524 47.7659H50.4361C50.1857 47.7659 50.0177 47.56 50.1185 47.3764L75.9057 0.389443C76.0064 0.205902 75.8385 0 75.588 0Z" fill="#15E9E9"/>
-</svg>
-
-const IconWrapperRoot = styled.div`
-position:relative;
-`
+const MobileHideWrapper = styled.div`@media(max-width: 768px){ display: none}`
 
 const IconWrapper: FunctionComponent<{ subtitle: string }> = ({subtitle, children: icon}) =>
-    <IconWrapperRoot>
-        <Power/>
+    <div>
+        {icon}
         <ItemSubTitle>{subtitle}</ItemSubTitle>
-    </IconWrapperRoot>
+    </div>;
 
 const GetContactField: FC = () => <Root>
-    <Title>Ваши контакты для связи</Title>
-    <ContactInputs/>
-    <IconHolder>{['', '', ''].map((subtitle, key) =>
-        <IconWrapper key={key} subtitle={subtitle}/>)}</IconHolder>
+    <MobileHideWrapper>
+        <Title>Ваши контакты для связи</Title>
+        <ContactInputs/>
+    </MobileHideWrapper>
+    <IconHolder>
+        {icons.map(({subtitle, icon}, key) =>
+            <IconWrapper key={key} subtitle={subtitle}>{icon(iconStyle)}</IconWrapper>)}
+    </IconHolder>
+    <MobileHideWrapper>
+        <Title>Станьте владельцем автоматизированного<br/>бизнеса с растущим спросом</Title>
+    </MobileHideWrapper>
 </Root>
 
 export default GetContactField
