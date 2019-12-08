@@ -9,9 +9,7 @@ import device from "current-device";
 
 const Root = styled.div`
 background-color: ${colors.bgDark};
-height: 1080px;
-@media (max-width: 1280px) {height: 820px;}
-@media (max-width: 768px) {height: 670px;}
+height: 100vh;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -21,7 +19,7 @@ position:relative;
 
 const Title = styled.h1`
 ${fonts.gotham_white_120};
-margin: 260px 0 0 0 ;
+margin: 24vh 0 1vh 0 ;
 white-space: nowrap;
 b{
  ${gotham_bold};
@@ -29,11 +27,11 @@ b{
 
 @media (max-width: 1280px) {
     ${fonts.gotham_white_72};
-    margin: 160px 0 30px 0 ;
+    //margin: 160px 0 30px 0 ;
 }
 @media (max-width: 768px) {
     ${fonts.gotham_white_34};
-    margin: 150px 0 10px 0 ;
+    //margin: 150px 0 10px 0 ;
 }
 @media (max-width: 375px) {
 font-size: 24px;
@@ -42,17 +40,17 @@ font-size: 24px;
 `
 const SubTitle = styled.h2`
 ${fonts.roboto_white_64};
-padding-bottom: 152px;
+padding-bottom: 14vh;
 margin: 0;
 
 @media (max-width: 1280px) {
     ${fonts.roboto_white_36};
-    padding-bottom: 100px;
+    //padding-bottom: 100px;
 }
 
 @media (max-width: 768px) {
     ${fonts.roboto_white_20};
-    padding-bottom: 50px;
+    //padding-bottom: 50px;
 }
 `
 

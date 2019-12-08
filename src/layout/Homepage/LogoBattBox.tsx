@@ -4,9 +4,10 @@ import { jsx } from "@emotion/core";
 import styled from "@emotion/styled";
 
 const Root = styled.div`
-padding-top: 65px;
-    @media (max-width: 1280px) and (min-width: 768px){
-        padding-top: 55px;
+    padding-top: 6vh;
+    
+    @media (max-width: 1280px){
+         padding-top: 5vh;
     }
     
     @media (max-width: 768px) {
