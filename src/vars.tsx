@@ -100,11 +100,53 @@ export const fonts = {
   color: ${colors.black};
 
 `,
+    gotham_white_36_medium: css`
+  ${gotham_medium};
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: left;
+  color: ${colors.white};
+
+`,
+    gotham_white_24_medium: css`
+  ${gotham_medium};
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: left;
+  color: ${colors.white};
+
+`,
+    gotham_white_18_medium: css`
+  ${gotham_medium};
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: left;
+  color: ${colors.white};
+
+`,
     gotham_black_22_medium: css`
   ${gotham_medium};
   font-weight: bold;
   font-size: 22px;
   line-height: 27px;
+  color: ${colors.black};
+
+`,
+    gotham_black_25: css`
+  ${gotham_light};
+  font-size: 25px;
+  line-height: 30px;
+  text-align: left;
+  color: ${colors.black};
+
+`,
+    gotham_black_25_medium: css`
+  ${gotham_medium};
+  font-size: 25px;
+  line-height: 30px;
   color: ${colors.black};
 
 `,
@@ -175,6 +217,30 @@ export const fonts = {
   line-height: 21px;
   font-weight: 500;
   color: ${colors.black};
+`,
+    roboto_white_24: css`
+  ${roboto};
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: left;
+  color: ${colors.white};
+`,
+    roboto_white_16: css`
+  ${roboto};
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: left;
+  color: ${colors.white};
+`,
+    roboto_white_15: css`
+  ${roboto};
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: left;
+  color: ${colors.white};
 `
 
 }
