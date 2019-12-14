@@ -59,8 +59,8 @@ background: url("${p3}") no-repeat;
 
 const Text = styled.div`
 background-color: transparent;
-padding: 0.7vw 0 0 2vw;
-width: 32vw;
+padding: 0.5vw 0 0 1.2vw;
+width: 22vw;
 ${fonts.gotham_black_25};
 b{
 ${fonts.gotham_black_25_medium};
