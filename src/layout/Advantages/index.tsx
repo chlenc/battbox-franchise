@@ -97,7 +97,7 @@ top: -360px;
 @media (max-width: 450px) {   top: -75vw;}
 
 `;
-const Mbr = styled.br`display: none;@media (max-width: 768px) {display: block;}`
+const Mbr = styled.br`display: none;@media (max-width: 768px) and (min-width: 480px) {display: block;}`
 
 const Round = () =>
     <svg css={roundStyle} width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
