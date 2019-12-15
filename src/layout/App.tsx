@@ -4,6 +4,7 @@ import HomepageIconSet from "@src/layout/HomepageIconSet";
 import GetContactField from "@src/layout/GetContactsField";
 import About from "@src/layout/About";
 import HowItWorks from "@src/layout/HowItWorks";
+import Advantages from "@src/layout/Advantages";
 
 export default class App extends React.Component {
 
@@ -14,6 +15,7 @@ export default class App extends React.Component {
             <GetContactField/>
             <About/>
             <HowItWorks/>
+            <Advantages/>
         </div>;
     }
 }

@@ -15,7 +15,7 @@ background-color: ${colors.white};
 display: flex;
 flex-direction: column;
 align-items: center;
-padding: 8vw 0 ;
+padding: 8vw ;
 
 `
 
@@ -25,18 +25,25 @@ margin: 0 0 95px 0 ;
 
 @media (max-width: 1280px) {${fonts.gotham_black_32_medium};    margin: 75px 0 45px 0 ;}
 @media (max-width: 768px) {    ${fonts.gotham_black_22_medium};    margin: 40px 0 45px 0 ;}
-@media (max-width: 375px) {
-}
 
 `
 
 const Items = styled.div`
 display: flex;
+@media (max-width: 768px) {flex-direction: column}
+
+& > * {
+margin-right: 4vw;
+@media (max-width: 1280px) {margin-right: 2vw}
+@media (max-width: 768px) {margin: 0 0 25px 0}
+
+}
+& > :last-child{
+margin-right: 0;
+}
 `
 
 const itemStyle = css`
-//height: 70px;
-//width: 30px;
 position: relative;
 `
 
@@ -60,10 +67,15 @@ background: url("${p3}") no-repeat;
 const Text = styled.div`
 background-color: transparent;
 padding: 0.5vw 0 0 1.2vw;
-width: 22vw;
+//width: 22vw;
 ${fonts.gotham_black_25};
+
+@media (max-width: 1280px) {${fonts.gotham_black_18};}
+//@media (max-width: 768px) {width: 50vw;}
+
 b{
-${fonts.gotham_black_25_medium};
+    ${fonts.gotham_black_25_medium};
+    @media (max-width: 1280px) {${fonts.gotham_black_18_medium};}
 }
 `
 
