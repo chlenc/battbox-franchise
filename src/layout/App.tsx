@@ -5,6 +5,7 @@ import GetContactField from "@src/layout/GetContactsField";
 import About from "@src/layout/About";
 import HowItWorks from "@src/layout/HowItWorks";
 import Advantages from "@src/layout/Advantages";
+import WeGive from "@src/layout/WeGive";
 
 export default class App extends React.Component {
 
@@ -16,6 +17,7 @@ export default class App extends React.Component {
             <About/>
             <HowItWorks/>
             <Advantages/>
+            <WeGive/>
         </div>;
     }
 }

@@ -135,6 +135,14 @@ export const fonts = {
   color: ${colors.black};
 
 `,
+    gotham_black_22: css`
+  ${gotham_light};
+  font-size: 22px;
+  line-height: 27px;
+  text-align: left;
+  color: ${colors.black};
+
+`,
     gotham_black_25: css`
   ${gotham_light};
   font-size: 25px;
@@ -154,6 +162,14 @@ export const fonts = {
   ${gotham_light};
   font-size: 18px;
   line-height: 22px;
+  text-align: left;
+  color: ${colors.black};
+
+`,
+    gotham_black_15: css`
+  ${gotham_light};
+  font-size: 15px;
+  line-height: 18px;
   text-align: left;
   color: ${colors.black};
 
@@ -224,6 +240,14 @@ export const fonts = {
   line-height: 22px;
    text-align: left;
   color: ${colors.white};
+
+`,
+    gotham_black_24_medium: css`
+  ${gotham_medium};
+  font-size: 24px;
+  line-height: 29px;
+  text-align: left;
+  color: ${colors.black};
 
 `,
 

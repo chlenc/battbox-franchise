@@ -142,7 +142,7 @@ const Advantages: React.FunctionComponent = () => <Root>
 const Station = () => <Item>
     <Round/>
     <b>вандалостойкая станция <br/></b>
-    все power bank заблокированы<Mbr/>
+    все power bank заблокированы <Mbr/>
     с помощью электронного замка
 </Item>
 const Applications = () => <Item>
@@ -156,8 +156,8 @@ const Applications = () => <Item>
 const Network = () => <Item>
     <Round/>
     <b>автоматизированная сеть<br/></b>
-    все оборудование отслеживается<Mbr/>
-    online управяйте через платформу<Mbr/>
+    все оборудование отслеживается <Mbr/>
+    online управяйте через платформу <Mbr/>
     BattBox management
 </Item>
 const Profit = () => <Item>
@@ -165,15 +165,15 @@ const Profit = () => <Item>
     <b>дополнительная прибыль<br/></b>
     каждый power bank -
     это рекламная <Mbr/>площадка,
-    ей вы распоряжаетесь<Mbr/>
-    самостоятельно и получаете<Mbr/>
+    ей вы распоряжаетесь <Mbr/>
+    самостоятельно и получаете <Mbr/>
     100% от вознаграждения
 </Item>
 const Smart = () => <Item>
     <Round/>
     <b>умная зарядка<br/></b>
-    наши power bank имеют MFI<Mbr/>
-    сертификацию и кнопку плавного<Mbr/>
+    наши power bank имеют MFI <Mbr/>
+    сертификацию и кнопку плавного <Mbr/>
     пуска для безопасности смартфона
 </Item>
 const Experience = () => <Item>
@@ -181,7 +181,7 @@ const Experience = () => <Item>
     <b>мировой опыт<br/></b>
     мы являемся партнерами
     крупнейшей <Mbr/>Сингапурской
-    компании с присутствием<Mbr/>
+    компании с присутствием <Mbr/>
     на рынке пауршеринга
     более 2-ух лет
 </Item>
