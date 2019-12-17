@@ -250,6 +250,22 @@ export const fonts = {
   color: ${colors.black};
 
 `,
+    gotham_black_26_medium: css`
+  ${gotham_medium};
+  font-size: 26px;
+  line-height: 32px;
+  text-align: left;
+  color: ${colors.black};
+
+`,
+    gotham_black_26: css`
+  ${gotham_light};
+  font-size: 26px;
+  line-height: 32px;
+  text-align: left;
+  color: ${colors.black};
+
+`,
 
     //==============
 

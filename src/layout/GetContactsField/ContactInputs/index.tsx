@@ -4,7 +4,7 @@ import Input from "@src/Components/Input";
 import Button from "@src/Components/Button";
 
 const Root = styled.div`
-
+display: flex;
 & > * {
 margin-right: 20px;
 }
@@ -14,6 +14,15 @@ margin-right: 0;
 }
 
 padding-bottom: 120px;
+@media(max-width: 768px){
+padding-bottom:0;
+& > * {
+  margin-right: 0;
+  margin-bottom: 16px;
+}
+  width: 100%;
+  flex-direction: column;
+}
 `;
 
 interface IProps {

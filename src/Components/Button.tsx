@@ -22,5 +22,6 @@ height: 50px;
 @media(max-width: 1200px){ width: 180px}
 @media(max-width: 1000px){ width: 150px}
 @media(max-width: 880px){ width: 130px}
+@media(max-width: 768px){ width: 100%}
 
 `
