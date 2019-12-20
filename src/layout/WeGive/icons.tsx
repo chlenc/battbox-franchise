@@ -2,7 +2,6 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css, jsx } from "@emotion/core";
-import { useWindowDimensions } from "@src/utils";
 
 const Root = styled.div`display: flex`
 const SVG = styled.svg`

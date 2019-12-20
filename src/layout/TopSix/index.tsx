@@ -5,7 +5,7 @@ import { colors, fonts } from "@src/vars";
 import { css, jsx } from "@emotion/core";
 import ContactInputs from "@src/layout/GetContactsField/ContactInputs";
 const Root = styled.div`
-padding: 20px 7vw;
+padding: 7vw;
 display: flex;
 flex-direction: column;
 align-items: center;

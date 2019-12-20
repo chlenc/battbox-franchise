@@ -23,15 +23,15 @@ color:${colors.white};
 `
 
 const Root = styled.div`
-padding: 105px 20vw 65px 20vw;
+padding: 105px 0 65px 0;
 background-color: ${colors.bgDark};
 opacity: 0.9;
 
 @media(max-width: 1280px){
-  padding: 64px 15vw 64px 15vw;
+  padding: 64px 0 64px 0;
 }
 @media(max-width: 768px){
-  padding: 35px 10vw 0 10vw;
+  padding: 35px 0 0 0;
   background-color: ${colors.bgDark};
   opacity: 1;
 }
@@ -39,10 +39,11 @@ opacity: 0.9;
 `;
 const Row = styled.div`
 display: flex;
-justify-content: space-between;
-
-& > :last-child{
-margin-left: 30px;
+justify-content: center;
+margin: -15px;
+padding: 0 5vw;
+& > *{
+margin: 15px;
 }
 `;
 
@@ -67,7 +68,7 @@ b{
 };
 
 @media(max-width: 768px){
-  max-width: 365px;
+  max-width: 200px;
   padding-bottom: 40px;
   ${fonts.gotham_white_18};
 b{
@@ -80,10 +81,10 @@ b{
 const revertedRowStyle = css`
 @media(max-width: 768px){
   flex-direction: row-reverse;
-  & > :last-child{
-    margin-left: 0;
-    margin-right: 30px;
-  }
+  //& > :last-child{
+  //  margin-left: 0;
+  //  margin-right: 30px;
+  //}
 }
 `
 

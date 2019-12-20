@@ -1,5 +1,4 @@
 
-
 body {
   height: 100%;
   width: 100%;
@@ -13,6 +12,7 @@ body {
   //& { overflow: -moz-scrollbars-none; }
 
 }
+
 html {
   overflow-x: hidden;
   min-height: 100%;
@@ -20,10 +20,32 @@ html {
 
 
 input[type='number'] {
-  -moz-appearance:textfield;
+  -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+
+
+:global {
+  .rc-tooltip {
+    background-color: transparent;
+    opacity: unset;
+  }
+
+  .rc-tooltip-inner {
+    padding: 16px 14px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    border: unset;
+    width: 270px;
+  }
+
+  .rc-tooltip-arrow{
+    border-color: transparent !important;
+  }
+
+}
+
