@@ -2,7 +2,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { css, jsx } from "@emotion/core";
-import { fonts } from "@src/vars";
+import { fonts, gotham_light, gotham_medium } from "@src/vars";
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap_white.css'
 
@@ -43,14 +43,45 @@ display: flex;
 interface IProps {
     text: string
     info?: string
+    value?: string,
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 
 const InputField: React.FunctionComponent<IProps> = ({text, info}) => <InputFieldRoot>
     {info && <Question text={info}/>}
     <InputFieldText>{text}</InputFieldText>
-    <InputWrapper> <CalcInput/></InputWrapper>
+    <InputWrapper><CalcInput/></InputWrapper>
 </InputFieldRoot>;
+
+const Dem = styled.div`
+width: 3.5vw;
+${gotham_light};
+text-align: left;
+padding-left: 1vw;
+`;
+
+const InputFieldOut = styled.div`
+display: flex;
+justify-content: flex-end; 
+flex:1;
+${gotham_medium};
+text-align: left;
+`;
+
+
+export const OutputField: React.FunctionComponent<{ text: string, value?: string | number, isTitle?: boolean, dem?: string }>
+    = ({text, value, isTitle, dem}) =>
+    <InputFieldRoot css={css`align-items: flex-end; ${isTitle ? 'font-size: 1.3vw;' : ''}`}>
+        <InputFieldText css={css`flex:2.6`}>{text}</InputFieldText>
+        <InputFieldOut>
+            {value != null ? value : '-'}
+            {isTitle ? <div>&nbsp;{dem}</div> : <Dem>{dem}</Dem>}
+
+        </InputFieldOut>
+
+    </InputFieldRoot>;
+
 
 const Text = styled.div`
 ${fonts.gotham_black_18}
@@ -63,7 +94,7 @@ position: absolute;
 left: -2.3vw;
 `
 
-const arrowStyle = css`    
+const arrowStyle = css`
     width: 1vw;
     height: 1vw;
     position: absolute;
