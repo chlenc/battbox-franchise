@@ -48,10 +48,10 @@ interface IProps {
 }
 
 
-const InputField: React.FunctionComponent<IProps> = ({text, info}) => <InputFieldRoot>
+const InputField: React.FunctionComponent<IProps> = ({text, info, value, onChange}) => <InputFieldRoot>
     {info && <Question text={info}/>}
     <InputFieldText>{text}</InputFieldText>
-    <InputWrapper><CalcInput/></InputWrapper>
+    <InputWrapper><CalcInput value={value} onChange={onChange}/></InputWrapper>
 </InputFieldRoot>;
 
 const Dem = styled.div`
