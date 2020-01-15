@@ -7,9 +7,9 @@ background: ${colors.aqua};
 border-radius: 2px;
 outline: none;
 border: none;
-text-align: center;
 cursor: pointer;
-
+text-align: center;
+justify-content: center;
 ${fonts.roboto_black_20};
 width: 250px;
 height: 70px;

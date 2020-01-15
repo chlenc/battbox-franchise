@@ -8,7 +8,9 @@ import { css, jsx } from "@emotion/core";
 const Root = styled.div`
 background: linear-gradient(0deg, #1A1A1A 16.33%, #313131 95.61%);
 mix-blend-mode: normal;
-
+@media(max-width: 768px){
+  background: ${colors.bgDark};
+}
 `
 
 

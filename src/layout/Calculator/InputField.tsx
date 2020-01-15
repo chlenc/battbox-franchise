@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import styled from "@emotion/styled";
 import React from "react";
-import { css, jsx } from "@emotion/core";
-import { fonts, gotham_light, gotham_medium } from "@src/vars";
+import {css, jsx} from "@emotion/core";
+import {fonts, gotham_light, gotham_medium} from "@src/vars";
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap_white.css'
+import {useWindowDimensions} from "@src/utils";
 
 const InputWrapper = styled.div`
 flex:1;
@@ -22,6 +23,11 @@ background: #F3F3F3;
 border-radius: 2px;
 padding-left: 1vw;
 
+@media(max-width: 768px){
+height: 40px;
+width: 90%;
+}
+
 `
 
 
@@ -34,8 +40,31 @@ width: 100%;
 justify-content: space-between;
 margin-bottom: 1.2vw;
 position:relative;
+align-items: flex-end;
+
+${(props: { isTitle: boolean }) =>
+    props.isTitle && css`
+font-size: 1.3vw;
+@media(max-width: 768px){
+  ${fonts.gotham_black_18_medium};
+  text-align: left;
+}
+`
+};
+
+@media(max-width: 768px){
+font-size: 16px;
+line-height: 19px;
+margin-bottom: 16px;
+}
+@media(max-width: 375px){
+   font-size: 14px;
+   line-height: 16px;
+}
+
 `;
 const InputFieldText = styled.div`
+position: relative;
 flex:1;
 display: flex;
 `;
@@ -48,9 +77,11 @@ interface IProps {
 }
 
 
-const InputField: React.FunctionComponent<IProps> = ({text, info, value, onChange}) => <InputFieldRoot>
-    {info && <Question text={info}/>}
-    <InputFieldText>{text}</InputFieldText>
+const InputField: React.FunctionComponent<IProps> = ({text, info, value, onChange}) => <InputFieldRoot isTitle={false}>
+    <InputFieldText>
+        {info && <Question text={info}/>}
+        {text}
+    </InputFieldText>
     <InputWrapper><CalcInput value={value} onChange={onChange}/></InputWrapper>
 </InputFieldRoot>;
 
@@ -70,18 +101,33 @@ text-align: left;
 `;
 
 
-export const OutputField: React.FunctionComponent<{ text: string, value?: string | number, isTitle?: boolean, dem?: string }>
-    = ({text, value, isTitle, dem}) =>
-    <InputFieldRoot css={css`align-items: flex-end; ${isTitle ? 'font-size: 1.3vw;' : ''}`}>
-        <InputFieldText css={css`flex:2.6`}>{text}</InputFieldText>
+export const OutputField: React.FC<{ text: string, value?: string | number, isTitle?: boolean, dem?: string }>
+    = ({text, value, isTitle, dem}) => {
+    const {width} = useWindowDimensions();
+
+    if (isTitle) {
+        if (width > 768) {
+            return <InputFieldRoot isTitle={isTitle || false}>
+                <InputFieldText css={css`flex:2.6`}>{text}:</InputFieldText>
+                <InputFieldOut>
+                    {value != null ? value : '-'}
+                    {isTitle ? <div>&nbsp;{dem}</div> : <Dem>{dem}</Dem>}
+
+                </InputFieldOut>
+
+            </InputFieldRoot>
+        }
+    }
+
+
+    return <InputFieldRoot isTitle={false}>
+        <InputFieldText css={css`flex:2.6`}>{text} {dem && `(${dem}):`}</InputFieldText>
         <InputFieldOut>
             {value != null ? value : '-'}
-            {isTitle ? <div>&nbsp;{dem}</div> : <Dem>{dem}</Dem>}
-
         </InputFieldOut>
 
     </InputFieldRoot>;
-
+}
 
 const Text = styled.div`
 ${fonts.gotham_black_18}
@@ -92,6 +138,12 @@ width: 1.3vw;
 height: 1.3vw;
 position: absolute;
 left: -2.3vw;
+@media(max-width: 768px){
+  width: 20px;
+  height: 20px;
+  left: auto;
+  right: 1px;
+}
 `
 
 const arrowStyle = css`
