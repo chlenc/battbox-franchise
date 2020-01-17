@@ -189,7 +189,7 @@ export default class Calculator extends React.Component<{}, IState> {
         ad: '',
         cost: '',
 
-        isResultForm: true,
+        isResultForm: false,
 
         output: {}
     };

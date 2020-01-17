@@ -63,3 +63,14 @@ export default class ContactInputs extends React.Component<IProps, IState> {
         </Root>
     }
 }
+
+function validate(value: string, type?: 'mail') {
+    let isValid = false
+    if (type === "mail" && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+        isValid = true;
+    } else if (value !== '') {
+        isValid = true;
+    }
+    return isValid
+
+}
