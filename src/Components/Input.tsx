@@ -6,10 +6,10 @@ export default styled.input`
  background: ${colors.disabld};
 border-radius: 1px;
 outline: none;
-border: none;
+border: 1px solid transparent;
 text-align: center;
 cursor: text;
-
+padding: 0;
 ${fonts.roboto_black_20};
 width: 250px;
 height: 70px;
@@ -26,6 +26,10 @@ height: 50px;
 
 &::placeholder{
 color: ${colors.gray};
+}
+
+&:focus{
+border: 1px solid #9AF9F9;
 }
 
 
