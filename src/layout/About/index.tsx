@@ -88,7 +88,7 @@ const About = () => <Root>
             и запусить автономный бизнес по прокату
             зарядок вместе с BattBox.
         </div>
-        <More href="/">подробнее&nbsp;<Arrow/></More>
+        <More href="https://batt-box.ru/">подробнее&nbsp;<Arrow/></More>
     </Text>
 
     <Picture/>

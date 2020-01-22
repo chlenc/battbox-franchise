@@ -159,7 +159,7 @@ interface IState {
     hour: string,
     day: string,
     ad: string,
-    cost: string,
+    salary: string,
     isResultForm: boolean
     output: {}
 }
@@ -187,7 +187,7 @@ export default class Calculator extends React.Component<{}, IState> {
         hour: '',
         day: '',
         ad: '',
-        cost: '',
+        salary: '',
 
         isResultForm: false,
 
@@ -205,7 +205,7 @@ export default class Calculator extends React.Component<{}, IState> {
     handleBackToCalculate = () => this.setState({isResultForm: false});
 
     render() {
-        const {population, ml108, ml3008, additional, hour, day, ad, cost} = this.state;
+        const {population, ml108, ml3008, additional, hour, day, ad, salary} = this.state;
         const profit = calcProfit(this.state);
         const inv = calcInvestments(this.state);
         const traffic = calcTraffic(this.state);
@@ -258,8 +258,8 @@ export default class Calculator extends React.Component<{}, IState> {
                 />
                 <InputField
                     text="Зарплата сотрудника на аллокацию:"
-                    value={cost}
-                    onChange={(e) => this.updateInput(e.target.value, 'cost')}
+                    value={salary}
+                    onChange={(e) => this.updateInput(e.target.value, 'salary')}
 
                 />
                 <br/>
@@ -267,15 +267,15 @@ export default class Calculator extends React.Component<{}, IState> {
             </CalcBody>
             <ResultBody open={this.state.isResultForm}>
                 <Title>Результат</Title><br/>
-                <OutputField text="Теоретический срок окупаемости" value={paybackPeriod(traffic, inv, profit)}
+                <OutputField text="Теоретический срок окупаемости" value={paybackPeriod(traffic, inv, profit, +salary)}
                              dem={"мес"} isTitle/><br/>
                 <OutputField text="Рекомендуемое количество станций для приобретения"
                              value={calcMinCount(this.state)} dem={"шт."}/>
                 <OutputField text="Требуемые инвестиции в сеть" value={inv} dem={"₽"}/>
                 <OutputField text="Выручка от всей сети" value={profit} dem={"₽/мес"}/>
                 <OutputField text="Комиссия BattBox" value={calcCommission(profit)} dem={"₽/мес"}/>
-                <OutputField text="Расходы на сеть" value={cost} dem={"₽/мес"}/>
-                <OutputField text="Выручка в год" value={profit * 365} dem={"₽"}/><br/><br/>
+                <OutputField text="Расходы на сеть" value={salary} dem={"₽/мес"}/>
+                <OutputField text="Выручка в год" value={profit * 12} dem={"₽"}/><br/><br/>
                 <Button css={showInMobileStyle} onClick={this.handleBackToCalculate}>Изменить данные</Button>
                 <Title css={[css`font-size: 1.9vw`, hideInMobileStyle]}>Запросить подробный рассчет</Title><br/><br/>
                 <UserDetailWrapper css={hideInMobileStyle}>
@@ -288,10 +288,15 @@ export default class Calculator extends React.Component<{}, IState> {
                         <UserDetailInput placeholder="Ваше телефон"/>
                     </UserDetailRow>
                 </UserDetailWrapper>
-                <Description css={showInMobileStyle}>
+                <Description
+                    // css={showInMobileStyle}
+                >
                     <br/>Данный калькулятор основан на теоретической модели в г. Москва. Более подробный
                     калькулятор вы можете запросить у менеджера</Description>
-                <Button css={showInMobileStyle}>Подробный расчет</Button>
+                <Button
+                    //todo fix button
+                    css={showInMobileStyle}
+                >Подробный расчет</Button>
             </ResultBody>
         </Root>
     }
@@ -324,7 +329,7 @@ function calcInvestments({ml108, ml3008, additional}: IState) {
 
 function calcProfit({ml108, ml3008, additional, hour, day, ad}: IState) {
     if (isNaN(+ml108) || isNaN(+ml3008) || isNaN(+additional) || isNaN(+hour) || isNaN(+day) || isNaN(+ad)) return 0;
-    const midPrice = ((+day) * 2 + (+hour)) / 3;
+    const midPrice = ((+day) * 2.5 + (+hour)) / 3;
     const mid10 = (() => {
         if (+ml108 <= 0) return 0;
         else if (+ml108 + (+ml3008 * 3) > 99) return 4.5;
@@ -354,6 +359,6 @@ const calcTraffic = ({ml108, ml3008}: IState) => {
     return ((+ml108) + (+ml3008) * 4) * 70;
 }
 
-const paybackPeriod = (traffic: number, inv: number, profit: number) =>
-    [traffic, inv, profit].includes(0) ? 0 : Math.ceil((inv / (((profit * 0.85) - traffic) * 12) * 12) * 100) / 100;
+const paybackPeriod = (traffic: number, inv: number, profit: number, salary: number) =>
+    [traffic, inv, profit].includes(0) ? 0 : Math.ceil((inv / (((profit * 0.85) - traffic - salary) * 12) * 12) * 100) / 100;
 
