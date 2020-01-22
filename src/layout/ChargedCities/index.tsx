@@ -7,6 +7,9 @@ import map from './map.svg'
 import { css, jsx } from "@emotion/core";
 const Root = styled.div`
 background: linear-gradient(0deg, #1A1A1A 16.33%, #313131 95.61%);
+display: flex;
+flex-direction: column;
+align-items: center;
 mix-blend-mode: normal;
 @media(max-width: 768px){
   background: ${colors.bgDark};
@@ -36,7 +39,7 @@ export default class ChargedCities extends React.Component{
         return <Root>
             <Calculator/>
             <Title>Заряженные города</Title>
-            <img css={css`width: 100%`} src={map} alt="map"/>
+            <img css={css`width: 80%`} src={map} alt="map"/>
         </Root>
     }
 }

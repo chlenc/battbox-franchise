@@ -50,7 +50,7 @@ export default class TopSix extends React.Component{
                 Казань<br/><br/>
                 Сочи<br/><br/>
                 Новосибирск<br/><br/>
-                Нижний Новгород<br/><br/><br/><br/>
+                Краснодар<br/><br/><br/><br/>
             </Text>
             <Title>Ваши контакты для связи<br/><br/></Title>
             <ContactInputs/>

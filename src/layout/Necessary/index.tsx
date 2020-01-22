@@ -11,7 +11,7 @@ color:${colors.white};
 
 @media(max-width: 1280px){
   ${fonts.gotham_black_32_medium};
-  color:${colors.white}
+  color:${colors.white};
   margin-bottom: 50px;
 }
 

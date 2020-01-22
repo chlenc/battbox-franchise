@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { colors, fonts } from "@src/vars";
 
 export default styled.input`
- background: ${colors.disabld};
+background: ${colors.disabld};
 border-radius: 1px;
 outline: none;
 border: 1px solid transparent;
@@ -17,7 +17,7 @@ height: 70px;
 @media(max-width: 1380px){
 ${fonts.roboto_black_18};
 width: 200px;
-height: 50px;
+height: 48px;
 }
 @media(max-width: 1200px){ width: 180px}
 @media(max-width: 1000px){ width: 150px}

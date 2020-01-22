@@ -104,13 +104,16 @@ text-align: left;
 export const OutputField: React.FC<{ text: string, value?: string | number, isTitle?: boolean, dem?: string }>
     = ({text, value, isTitle, dem}) => {
     const {width} = useWindowDimensions();
-
+    value = value != null ? value : '-'
+    value = typeof +value === "number" && !isNaN(+value)
+        ? String(value).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')
+        : value
     if (isTitle) {
         if (width > 768) {
             return <InputFieldRoot isTitle={isTitle || false}>
                 <InputFieldText css={css`flex:2.6`}>{text}:</InputFieldText>
                 <InputFieldOut>
-                    {value != null ? value : '-'}
+                    {value}
                     {isTitle ? <div>&nbsp;{dem}</div> : <Dem>{dem}</Dem>}
 
                 </InputFieldOut>

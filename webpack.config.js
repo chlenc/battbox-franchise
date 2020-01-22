@@ -7,6 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 
 const babelLoaderOptions = {
@@ -25,6 +26,9 @@ module.exports = (env, argv) => {
     return {
         entry: {
             app: './src/index.tsx'
+        },
+        node: {
+            fs: 'empty'
         },
         mode: argv.mode,
         output: {
@@ -45,6 +49,7 @@ module.exports = (env, argv) => {
             }),
             new CleanWebpackPlugin(),
             new ForkTsCheckerWebpackPlugin(),
+            new Dotenv()
         ],
 
         //Enable sourcemaps for debugging webpack's output.

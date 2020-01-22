@@ -1,17 +1,19 @@
 /** @jsx jsx */
 import React from "react";
 import styled from "@emotion/styled";
-import {colors, fonts, roboto} from "@src/vars";
-import {css, jsx} from "@emotion/core";
-import InputField, {OutputField} from "@src/layout/Calculator/InputField";
+import { colors, fonts, roboto } from "@src/vars";
+import { css, jsx } from "@emotion/core";
+import InputField, { OutputField } from "@src/layout/Calculator/InputField";
 import Button from "@src/Components/Button";
-import {useWindowDimensions} from "@src/utils";
+import { useWindowDimensions } from "@src/utils";
+import ContactInputs from "@src/layout/GetContactsField/ContactInputs";
 
 const Root = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
 padding-bottom: 117px;
+width: 100%;
 `;
 
 const CalcBodyWrapper = styled.div`
@@ -31,7 +33,7 @@ const CalcBodyRoot = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-padding: 3.5vw 4.7vw;
+padding: 3.4vw 4.7vw;
 `;
 
 const CalcBody: React.FC<{ open?: boolean }> = ({children, open}) => {
@@ -79,9 +81,11 @@ text-align: left;
 const ResultBodyRoot = styled.div`
 display: flex;
 flex-direction: column;
-padding: 3.4vw 3.1vw 4.7vw 3.1vw;
+padding:calc(3.4vw + 20px)  4.7vw;
 align-items: center;
 width: 100%;
+@media(max-width: 1280px){padding:calc(3.4vw + 10px)   4.7vw;}
+@media(max-width: 768px){padding:3.4vw   4.7vw;}
 `;
 
 const ResultBody: React.FC<{ open?: boolean }> = ({children, open}) => {
@@ -113,10 +117,6 @@ display: none;
 }
 `
 
-const text = `Укажите предполагаемую месячную выручку от
-размещения рекламных материалов на power bank
-и в мобильном приложении в
- рублях)`
 
 const UserDetailInput = styled.input`
 background-color: ${colors.aquaDisabled};
@@ -137,6 +137,7 @@ flex: 1;
 `
 const UserDetailWrapper = styled.div`
 display: flex;
+justify-content: center;
 flex-wrap: wrap;
 margin-bottom: 2.6vw;
 `
@@ -161,6 +162,7 @@ interface IState {
     ad: string,
     salary: string,
     isResultForm: boolean
+    isContactForm: boolean
     output: {}
 }
 
@@ -177,6 +179,19 @@ display: flex;
 }
 `;
 
+
+const ContactsBody = styled.div`
+${showInMobileStyle};
+display: flex;
+flex-direction: column;
+background-color: ${colors.white};
+position: relative;
+min-width: 420px;
+min-height: 620px;
+padding: 106px 3.1vw 0 3.1vw;
+
+`
+
 export default class Calculator extends React.Component<{}, IState> {
 
     state = {
@@ -190,7 +205,7 @@ export default class Calculator extends React.Component<{}, IState> {
         salary: '',
 
         isResultForm: false,
-
+        isContactForm: false,
         output: {}
     };
 
@@ -203,14 +218,16 @@ export default class Calculator extends React.Component<{}, IState> {
 
     handleCalculate = () => this.setState({isResultForm: true});
     handleBackToCalculate = () => this.setState({isResultForm: false});
+    handleOpenContact = () => this.setState({isContactForm: true});
+    handleCloseContact = () => this.setState({isContactForm: false});
 
     render() {
-        const {population, ml108, ml3008, additional, hour, day, ad, salary} = this.state;
+        const {population, ml108, ml3008, additional, hour, day, ad, salary, isContactForm, isResultForm} = this.state;
         const profit = calcProfit(this.state);
         const inv = calcInvestments(this.state);
         const traffic = calcTraffic(this.state);
         return <Root>
-            <CalcBody open={!this.state.isResultForm}>
+            <CalcBody open={!isResultForm && !isContactForm}>
                 <Title>Калькулятор окупаемости</Title>
                 <Description><br/>Данный калькулятор основан на теоретической модели в г. Москва. Более подробный
                     калькулятор вы можете запросить у менеджера</Description>
@@ -234,25 +251,25 @@ export default class Calculator extends React.Component<{}, IState> {
                     text="Дополнительные крепления:"
                     value={additional}
                     onChange={(e) => this.updateInput(e.target.value, 'additional')}
-                    info={text}
+                    info={`Вы можете приобрести фирменные напольные стойки или настенные крепления. Цена крепления 6 000 рублей. Более подробную информацию запрашивайте у менеджера.`}
                 />
                 <Divider/>
                 <InputField
                     text="Час:"
-                    info={text}
+                    info={`Стоимость часовой аренды зарядки.`}
                     value={hour}
                     onChange={(e) => this.updateInput(e.target.value, 'hour')}
                 />
                 <InputField
                     text="Сутки:"
-                    info={text}
+                    info={`Стоимость суточной аренды.`}
                     value={day}
                     onChange={(e) => this.updateInput(e.target.value, 'day')}
                 />
                 <Divider/>
                 <InputField
                     text="Монетизация с рекламы:"
-                    info={text}
+                    info={`Укажите предполагаемую месячную выручку от размещения рекламных материалов на power bank и в мобильном приложении в рублях)`}
                     value={ad}
                     onChange={(e) => this.updateInput(e.target.value, 'ad')}
                 />
@@ -263,9 +280,13 @@ export default class Calculator extends React.Component<{}, IState> {
 
                 />
                 <br/>
-                <Button onClick={this.handleCalculate}>Рассчитать</Button>
+                <Description css={hideInMobileStyle}>
+                    <br/>Данный калькулятор основан на теоретической модели в г. Москва. Более подробный
+                    калькулятор вы можете запросить у менеджера</Description>
+                <Button css={showInMobileStyle}
+                        onClick={this.handleCalculate}>Рассчитать</Button>
             </CalcBody>
-            <ResultBody open={this.state.isResultForm}>
+            <ResultBody open={isResultForm && !isContactForm}>
                 <Title>Результат</Title><br/>
                 <OutputField text="Теоретический срок окупаемости" value={paybackPeriod(traffic, inv, profit, +salary)}
                              dem={"мес"} isTitle/><br/>
@@ -288,16 +309,29 @@ export default class Calculator extends React.Component<{}, IState> {
                         <UserDetailInput placeholder="Ваше телефон"/>
                     </UserDetailRow>
                 </UserDetailWrapper>
-                <Description
-                    // css={showInMobileStyle}
-                >
+                <Button css={[hideInMobileStyle,css`background-color: ${colors.white}`]}>Отправить</Button>
+                <Description css={showInMobileStyle}>
                     <br/>Данный калькулятор основан на теоретической модели в г. Москва. Более подробный
                     калькулятор вы можете запросить у менеджера</Description>
                 <Button
-                    //todo fix button
                     css={showInMobileStyle}
+                    onClick={this.handleOpenContact}
                 >Подробный расчет</Button>
             </ResultBody>
+            {isContactForm && isResultForm &&
+            <ContactsBody css={showInMobileStyle}>
+                <svg onClick={this.handleCloseContact}
+                     css={css`position: absolute; top: 10px; right: 10px;    z-index: 3;`} width="25" height="25"
+                     viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd"
+                          d="M5.9408 4.56619C5.55027 4.17567 4.91711 4.17567 4.52658 4.56619C4.13606 4.95672 4.13606 5.58988 4.52658 5.98041L10.8317 12.2855L4.40874 18.7084C4.01821 19.0989 4.01821 19.7321 4.40874 20.1226C4.79926 20.5131 5.43243 20.5131 5.82295 20.1226L12.2459 13.6997L18.6687 20.1225C19.0592 20.5131 19.6924 20.5131 20.0829 20.1225C20.4735 19.732 20.4735 19.0989 20.0829 18.7083L13.6601 12.2855L19.9651 5.98047C20.3556 5.58995 20.3556 4.95678 19.9651 4.56626C19.5746 4.17573 18.9414 4.17573 18.5509 4.56626L12.2459 10.8713L5.9408 4.56619Z"
+                          fill="#4A4A49"/>
+                </svg>
+                <Title css={css`text-align: center !important;margin-bottom: 46px`}>Ваши контакты для связи</Title>
+                <ContactInputs buttonMargin={96}/>
+                <br/><br/>
+            </ContactsBody>
+            }
         </Root>
     }
 }
