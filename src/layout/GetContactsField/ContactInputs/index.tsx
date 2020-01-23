@@ -1,11 +1,11 @@
 /** @jsx jsx */
-import React from "react";
-import styled from "@emotion/styled";
-import Input from "@src/Components/Input";
-import Button from "@src/Components/Button";
-import { css, jsx } from "@emotion/core";
-import { fonts } from "@src/vars";
-import axios from 'axios'
+import React, { Fragment } from 'react';
+import styled from '@emotion/styled';
+import Input from '@src/Components/Input';
+import Button from '@src/Components/Button';
+import { css, jsx } from '@emotion/core';
+import { colors, fonts, roboto } from '@src/vars';
+import axios from 'axios';
 
 const Root = styled.div`
 display: flex;
@@ -29,6 +29,8 @@ padding-bottom: 120px;
 
 interface IProps {
     buttonMargin?: number
+    resultPageForm?: boolean
+
 }
 
 interface IState {
@@ -48,7 +50,7 @@ interface IState {
 const InputField = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const ErrorText = styled.div`
 ${fonts.roboto_white_15};
@@ -58,12 +60,13 @@ display: none;
 font-size: 14px;
 color: #FF0000;
 margin-top: 6px;
-`
+`;
 
 const DoneText = styled.div`
 ${fonts.roboto_white_36};
 max-width: 720px;
 color: #15E9E9;
+margin-bottom: 40px;
 @media(max-width: 768px){
 ${fonts.roboto_white_24};
 text-align: center;
@@ -74,85 +77,149 @@ color: #15E9E9;
 ${fonts.roboto_white_20};
 color: #15E9E9;
 }
-`
+`;
 
+const UserDetailInput = styled.input`
+background-color: ${colors.aquaDisabled};
+border-radius: 4px;
+height: 2.6vw;
+border: 1px solid transparent;
+&::placeholder{
+  ${roboto};
+  color: ${colors.white};
+  font-size: 0.9vw;
+}
+
+${roboto};
+color: ${colors.white};
+font-size: 0.9vw;
+outline: none;
+flex: 1;
+`;
+const UserDetailWrapper = styled.div`
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+margin-bottom: 2.6vw;
+`;
+const UserDetailRow = styled.div`
+display: flex;
+justify-content: space-between;
+margin: -0.4vw;
+flex: 1;
+padding-bottom: 1vw;
+& > * {
+margin: 0.4vw;
+}
+`;
+const resultPageDoneStyle = css`
+${fonts.roboto_white_24};
+max-width: 720px;
+color: #000;
+margin-bottom: 40px;
+@media(max-width: 1280px){
+${fonts.roboto_white_15};
+text-align: left;
+max-width: 470px;
+color: #000;
+}
+`;
 export default class ContactInputs extends React.Component<IProps, IState> {
 
     state = {
-        // mail: '',
-        // name: '',
-        // phone: '',
-        // city: '',
-        'name': 'Алексей', 'city': 'Москва', 'phone': '89151272664', 'mail': 'alexnagorny.an@gmail.com',
+        mail: '',
+        name: '',
+        phone: '',
+        city: '',
+        // 'name': 'Алексей', 'city': 'Москва', 'phone': '89151272664', 'mail': 'alexnagorny.an@gmail.com',
         ismail: undefined,
         isname: undefined,
         isphone: undefined,
         iscity: undefined,
 
         isDone: false,
-        isLoading: false
+        isLoading: false,
     };
 
 
     handleChangeMail = ({target: {value: mail}}: React.ChangeEvent<HTMLInputElement>) => {
-        const ismail = validate(mail, 'mail')
-        this.setState({mail, ismail})
+        const ismail = validate(mail, 'mail');
+        this.setState({mail, ismail});
     };
 
     handleChangeName = ({target: {value: name}}: React.ChangeEvent<HTMLInputElement>) => {
-        const isname = validate(name)
-        this.setState({name, isname})
+        const isname = validate(name);
+        this.setState({name, isname});
     };
 
     handleChangePhone = ({target: {value: phone}}: React.ChangeEvent<HTMLInputElement>) => {
-        const isphone = validate(phone, 'phone')
-        let state: any = {isphone}
-        if (!isNaN(+phone)) state.phone = phone
-        this.setState(state)
+        const isphone = validate(phone, 'phone');
+        let state: any = {isphone};
+        if (!isNaN(+phone)) state.phone = phone;
+        this.setState(state);
 
     };
 
     handleChangeCity = ({target: {value: city}}: React.ChangeEvent<HTMLInputElement>) => {
-        const iscity = validate(city)
-        this.setState({city, iscity})
+        const iscity = validate(city);
+        this.setState({city, iscity});
     };
 
     handleSubmit = async () => {
         const {mail, name, phone, city} = this.state;
-        const ismail = validate(mail, 'mail')
-        const isname = validate(name)
-        const isphone = validate(phone, 'phone')
-        const iscity = validate(city)
+        const ismail = validate(mail, 'mail');
+        const isname = validate(name);
+        const isphone = validate(phone, 'phone');
+        const iscity = validate(city);
         if (ismail && isname && isphone && iscity) {
-            this.setState({isLoading: true})
+            this.setState({isLoading: true});
             const url = process.env.BACKEND_URL || 'https://franchize-mail-service.herokuapp.com/email';
             const key = process.env.SECURE_KEY || 'mytopthebestsecurekey';
             if (!url || !key) {
-                console.error('invalid backend url: ', url)
-                return
+                console.error('invalid backend url: ', url);
+                return;
             }
             const headers = {
-                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Origin': '*',
                 'SECUREKEY': key,
                 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-            }
-            const response = await axios.post(url, {mail, name, phone, city}, {headers, method: "POST"});
-            console.log(response)
+            };
+            const response = await axios.post(url, {mail, name, phone, city}, {headers, method: 'POST'});
+            console.log(response);
             if (response.status === 200) {
-                this.setState({isDone: true, isLoading: false})
+                this.setState({isDone: true, isLoading: false});
             } else {
-                console.error(response)
+                console.error(response);
             }
         } else {
-            this.setState({ismail, isname, isphone, iscity})
+            this.setState({ismail, isname, isphone, iscity});
         }
     };
 
     render() {
         const {mail, name, phone, city, ismail, isname, isphone, iscity, isDone, isLoading} = this.state;
-        if (isLoading) return <DoneText>Ваши данные отправляются...</DoneText>
-        return isDone ?
-            <DoneText>Ваши данные отправленны! В ближайшее время мы с вами свяжемся!</DoneText>
+        const {resultPageForm} = this.props;
+        if (isLoading) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные
+            отправляются...</DoneText>;
+        if (isDone) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные отправленны! В ближайшее
+            время мы с вами свяжемся!</DoneText>;
+        return resultPageForm ? <Fragment>
+                <UserDetailWrapper>
+                    <UserDetailRow>
+                        <UserDetailInput placeholder="Ваше имя" onChange={this.handleChangeMail} css={getStyle(ismail)}
+                                         value={mail}/>
+                        <UserDetailInput placeholder="Ваш город" onChange={this.handleChangeName} css={getStyle(isname)}
+                                         value={name}/>
+                    </UserDetailRow>
+                    <UserDetailRow>
+                        <UserDetailInput placeholder="Ваше E-mail" onChange={this.handleChangePhone} css={getStyle(isphone)}
+                                         value={phone}/>
+                        <UserDetailInput placeholder="Ваше телефон" onChange={this.handleChangeCity} css={getStyle(iscity)}
+                                         value={city}/>
+                    </UserDetailRow>
+                </UserDetailWrapper>
+                <Button onClick={this.handleSubmit} css={css`background-color: ${colors.white}`}>Отправить</Button>
+            </Fragment>
             : <Root>
                 <InputField>
                     <Input onChange={this.handleChangeMail} css={getStyle(ismail)} value={mail}
@@ -175,28 +242,29 @@ export default class ContactInputs extends React.Component<IProps, IState> {
                     {iscity === false && <ErrorText>Неверно заполнено</ErrorText>}
                 </InputField>
                 <Button onClick={this.handleSubmit}>Отправить</Button>
-            </Root>
+            </Root>;
     }
 }
 
 
 function getStyle(valid?: boolean) {
-    if (valid === true) return css`background-color: #9AF9F9`
-    else if (valid === false) return css` border-color: #FF0000;`
-    return undefined
+    if (valid === true) return css`background-color: #9AF9F9`;
+    else if (valid === false) return css` border-color: #FF0000;`;
+    return undefined;
 }
 
+
 function validate(value: string, type?: 'mail' | 'phone') {
-    let isValid = false
-    if (type === "mail") {
+    let isValid = false;
+    if (type === 'mail') {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value))
             isValid = true;
-    } else if (type === "phone") {
+    } else if (type === 'phone') {
         if (!isNaN(+value) && (value.length === 11))
             isValid = true;
     } else if (value !== '') {
         isValid = true;
     }
-    return isValid
+    return isValid;
 
 }

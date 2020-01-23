@@ -81,7 +81,7 @@ text-align: left;
 const ResultBodyRoot = styled.div`
 display: flex;
 flex-direction: column;
-padding:calc(3.4vw + 20px)  4.7vw;
+padding:calc(3.4vw + 1vw)  4.7vw;
 align-items: center;
 width: 100%;
 @media(max-width: 1280px){padding:calc(3.4vw + 10px)   4.7vw;}
@@ -118,39 +118,7 @@ display: none;
 `
 
 
-const UserDetailInput = styled.input`
-background-color: ${colors.aquaDisabled};
-border-radius: 4px;
-height: 2.6vw;
-border: none;
-&::placeholder{
-  ${roboto};
-  color: ${colors.white};
-  font-size: 0.9vw;
-}
 
-${roboto};
-color: ${colors.white};
-font-size: 0.9vw;
-outline: none;
-flex: 1;
-`
-const UserDetailWrapper = styled.div`
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-margin-bottom: 2.6vw;
-`
-const UserDetailRow = styled.div`
-display: flex;
-justify-content: space-between;
-margin: -0.4vw;
-flex: 1;
-padding-bottom: 1vw;
-& > * {
-margin: 0.4vw;
-}
-`
 
 interface IState {
     population: string,
@@ -167,6 +135,9 @@ interface IState {
 }
 
 const hideInMobileStyle = css`
+display: flex;
+align-items: center;
+flex-direction: column;
 @media(max-width: 768px){
  display: none;
 }
@@ -280,9 +251,6 @@ export default class Calculator extends React.Component<{}, IState> {
 
                 />
                 <br/>
-                <Description css={hideInMobileStyle}>
-                    <br/>Данный калькулятор основан на теоретической модели в г. Москва. Более подробный
-                    калькулятор вы можете запросить у менеджера</Description>
                 <Button css={showInMobileStyle}
                         onClick={this.handleCalculate}>Рассчитать</Button>
             </CalcBody>
@@ -299,17 +267,7 @@ export default class Calculator extends React.Component<{}, IState> {
                 <OutputField text="Выручка в год" value={profit * 12} dem={"₽"}/><br/><br/>
                 <Button css={showInMobileStyle} onClick={this.handleBackToCalculate}>Изменить данные</Button>
                 <Title css={[css`font-size: 1.9vw`, hideInMobileStyle]}>Запросить подробный рассчет</Title><br/><br/>
-                <UserDetailWrapper css={hideInMobileStyle}>
-                    <UserDetailRow>
-                        <UserDetailInput placeholder="Ваше имя"/>
-                        <UserDetailInput placeholder="Ваш город"/>
-                    </UserDetailRow>
-                    <UserDetailRow>
-                        <UserDetailInput placeholder="Ваше E-mail"/>
-                        <UserDetailInput placeholder="Ваше телефон"/>
-                    </UserDetailRow>
-                </UserDetailWrapper>
-                <Button css={[hideInMobileStyle,css`background-color: ${colors.white}`]}>Отправить</Button>
+                <div css={hideInMobileStyle}><ContactInputs resultPageForm/></div>
                 <Description css={showInMobileStyle}>
                     <br/>Данный калькулятор основан на теоретической модели в г. Москва. Более подробный
                     калькулятор вы можете запросить у менеджера</Description>
