@@ -28,6 +28,7 @@ padding-top: 124px;
 padding-bottom: 60px;
 }
 @media(max-width: 768px){
+  padding-top: 56px;
   padding-left: 60px;
   padding-right:60px;
 }

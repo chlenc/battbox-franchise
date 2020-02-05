@@ -14,6 +14,7 @@ border-radius: 12px;
 outline: none;
 text-align: center;
 padding: 0;
+box-shadow: none;
 ${fonts.input_font};
 
 &::placeholder{

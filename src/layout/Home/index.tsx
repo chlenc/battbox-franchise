@@ -9,7 +9,7 @@ import GetContactField from "@src/layout/GetContactsField";
 
 const Root = styled.div`
 background-color: ${colors.bgDark};
-height: 100vh;
+height: 90vh;
 display: flex;
 position:relative; 
 `

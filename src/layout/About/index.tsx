@@ -6,12 +6,13 @@ import Picture from "@src/layout/About/Picture";
 import { css, jsx } from "@emotion/core";
 
 const Root = styled.div`
-padding: 162px 12vw 0 12vw;
+padding: 5vw 12vw 0 12vw;
 background: ${colors.gray};
 display: flex;
 justify-content: space-between;
 align-items: center;
 @media (max-width: 768px){
+    padding-top: 70px;
     flex-direction: column;
 }
 `

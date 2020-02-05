@@ -23,7 +23,7 @@ padding-bottom: 150px;
 }
 
 @media(max-width: 768px){
-padding-bottom: 128px;
+padding-bottom: 64px;
 }
 `
 

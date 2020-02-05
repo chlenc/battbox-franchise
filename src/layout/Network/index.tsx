@@ -13,6 +13,7 @@ const Root = styled.div`
 background: ${colors.gray};
 ${mainPadding};
 padding-bottom: 240px;
+padding-top: 48px;
 
 @media(max-width: 1280px){
 padding-bottom: 150px;

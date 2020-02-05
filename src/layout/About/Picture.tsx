@@ -9,6 +9,7 @@ flex: 1;
 display: flex;
 width: 50%;
 @media (max-width: 768px){
+    height: 370px; 
     width: 100%;
 }
 `;
