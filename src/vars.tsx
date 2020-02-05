@@ -1,11 +1,18 @@
-import { css } from "@emotion/core";
+import {css} from "@emotion/core";
 import GothamPro from "@src/assets/font/GothamPro.woff";
 import GothamPro_Medium from "@src/assets/font/GothamPro-Medium.woff";
 import GothamPro_Light from "@src/assets/font/GothamPro-Light.woff";
 import GothamPro_Bold from "@src/assets/font/GothamPro-Bold.woff";
-import { injectGlobal } from 'emotion';
+import HelveticaNeueCyr from "@src/assets/font/HelveticaNeueCyr-Bold.woff";
+import {injectGlobal} from 'emotion';
 
 injectGlobal`
+
+  @font-face {
+    font-family: "HelveticaNeueCyr";
+    src: url('${HelveticaNeueCyr}') format('woff');
+  }
+  //==================
   @font-face {
     font-family: "GothamPro";
     src: url('${GothamPro}') format('woff');
@@ -29,11 +36,12 @@ injectGlobal`
 export const colors = {
     white: '#FFFFFF',
     black: '#000000',
-    gray: '#A2A2A2',
     aqua: '#15E9E9',
+    bgDark: '#1A1A1A',
+    gray: '#232323',
+    //=========================
     aquaDisabled: '#10B8B8',
     disabld: '#F3F3F3',
-    bgDark: '#1A1A1A',
 };
 
 const fontTemplate = css`
@@ -43,10 +51,11 @@ text-align: center;
 z-index: 2;
 `;
 
-const gotham = css`
-font-family: GothamPro;
+export const helvetica_bold = css`
+font-family: HelveticaNeueCyr;
 ${fontTemplate};
-`;
+`
+
 export const gotham_medium = css`
 font-family: GothamPro-Medium;
 ${fontTemplate};
@@ -59,6 +68,10 @@ export const gotham_light = css`
 font-family: GothamPro-Light;
 ${fontTemplate};
 `;
+export const gotham = css`
+font-family: GothamPro;
+${fontTemplate};
+`;
 export const roboto = css`
 font-family: Roboto;
 ${fontTemplate};
@@ -66,6 +79,139 @@ ${fontTemplate};
 
 
 export const fonts = {
+    how_it_works_title: css`
+    ${gotham_bold};
+    font-size: 25px;
+    line-height: 30px;
+    color: ${colors.aqua};
+    text-align: left;
+    @media (max-width: 1280px) {
+      font-size: 22px;
+      line-height: 25px;      
+    }
+    @media (max-width: 768px) {
+      font-size: 18px;
+      line-height: 22px;      
+    }
+`,
+    input_font: css`
+  ${gotham_light};
+  color: ${colors.gray};
+  font-size: 20px;
+  line-height: 24px;
+ 
+  @media (max-width: 1280px) {
+    font-size: 16px;
+    line-height: 19px;
+  }
+`,
+
+    block_title: css`
+    ${gotham_bold};
+    font-size: 45px;
+    line-height: 55px;
+    color: ${colors.white};
+    text-align: left;
+    @media (max-width: 1280px) {
+      font-size: 32px;
+      line-height: 39px;;      
+    }
+    @media (max-width: 768px) {
+      font-size: 24px;
+      line-height: 29px;;      
+    }
+`,
+
+    block_about_title: css`
+    ${gotham_bold};
+    font-size: 36px;
+    line-height: 44px;
+    color: ${colors.white};
+    text-align: left;
+    @media (max-width: 1280px) {
+      font-size: 28px;
+      line-height: 34px;      
+    }
+    @media (max-width: 768px) {
+      font-size: 18px;
+      line-height: 22px;   
+    }
+`,
+    block_text: css`
+    ${gotham};
+    font-size: 24px;
+    line-height: 29px;
+    color: ${colors.white};
+    text-align: left;
+    @media (max-width: 1280px) {
+      font-size: 18px;
+      line-height: 22px;      
+    }
+    @media (max-width: 768px) {
+      font-size: 15px;
+      line-height: 18px;;   
+    }
+`,
+
+    navbar_font: css`
+  ${helvetica_bold};
+  white-space: nowrap;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.065em;
+  color: ${colors.white};
+  :hover{
+     color: ${colors.aqua};
+  }
+  @media(max-width: 1280px){
+    font-size: 16px;
+    line-height: 16px;
+  }
+  
+  @media(max-width: 768px){   
+    font-size: 18px;
+    line-height: 18px;
+    :hover{color: ${colors.white}}
+  }
+  
+  `,
+
+    home_title: css`
+  ${gotham};
+  color: ${colors.white};
+  font-size: 5.7vw;
+  line-height: 6.9vw;
+  text-align: left;
+  white-space: nowrap;
+  @media (max-width: 768px) {
+    font-size: 36px;
+    line-height: 44px; 
+    white-space: unset;
+    padding-bottom: 24px;
+  }
+  b{
+    font-family: GothamPro-Bold;
+  }
+`,
+
+    home_subtitle: css`
+  ${gotham};
+  color: ${colors.white};
+  font-size: 34px;
+  line-height: 41px;
+  text-align: left;
+  
+  @media (max-width: 1280px) {
+    font-size: 24px;
+    line-height: 28px;
+  }  
+  @media (max-width: 865px) {
+    font-size: 22px;
+    line-height: 27px;
+  }
+`,
+
+    //========================
     gotham_white_120: css`
   ${gotham_light};
   font-size: 120px;
@@ -362,3 +508,19 @@ export const fonts = {
 
 }
 
+export const mainPadding = css`
+padding-left:  170px;
+padding-right:  170px;
+@media(max-width: 1280px){
+  padding-left: 110px;
+  padding-right: 110px;
+}
+@media(max-width: 768px){
+  padding-left: 60px;
+  padding-right:60px;
+}
+@media(max-width: 375px){
+  padding-left: 24px;
+  padding-right:24px;
+}
+`

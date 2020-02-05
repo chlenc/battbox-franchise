@@ -1,27 +1,25 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { colors, fonts } from "@src/vars";
+import {colors, fonts, gotham_bold} from "@src/vars";
 
 export default styled.button`
-background: ${colors.aqua};
-border-radius: 2px;
-outline: none;
-cursor: pointer;
-text-align: center;
-justify-content: center;
-border: 1px solid transparent;
-${fonts.roboto_black_20};
-width: 250px;
+background: #232323;
+border: 1px solid #000000;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+border-radius: 10px;
+width: 100%;
 height: 70px;
+cursor: text;
+mix-blend-mode: normal;
+box-sizing: border-box;
+outline: none;
+text-align: center;
 padding: 0;
-@media(max-width: 1380px){
-${fonts.roboto_black_18};
-width: 200px;
-height: 50px;
-}
-@media(max-width: 1200px){ width: 180px}
-@media(max-width: 1000px){ width: 150px}
-@media(max-width: 880px){ width: 130px}
-@media(max-width: 768px){ width: 100%}
+${fonts.input_font};
+color: ${colors.white};
+${gotham_bold};
 
+@media(max-width: 1280px){
+  height: 50px;
+}
 `

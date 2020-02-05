@@ -10,10 +10,10 @@ import { css, jsx } from "@emotion/core";
 const Root = styled.div`
 background: url("${desktop}") center no-repeat;
 background-size: cover;
-padding: 3.28vw  8vw 10vw 8vw;
+padding: 0  8vw 10vw 8vw;
 @media (max-width: 1280px) {padding: 3.13vw 13vw 10vw 13vw}
 @media (max-width: 768px) {
-background: ${colors.bgDark};
+background: ${colors.gray};
 padding: 9vw  7vw 8vw 7vw;
 display: flex;
 flex-direction: column;
@@ -155,10 +155,11 @@ const Applications = () => <Item>
 </Item>
 const Network = () => <Item>
     <Round/>
-    <b>автоматизированная сеть<br/></b>
-    все оборудование отслеживается <Mbr/>
-    online управяйте через платформу <Mbr/>
-    BattBox management
+    <b>Помощь на старте<br/></b>
+    Мы передаем партнеру весь наш опыт, <Mbr/>
+    обучаем продажам, делимся контактами сетей, <Mbr/>
+    помогаем с подбором локаций
+    и оказываем поддержку
 </Item>
 const Profit = () => <Item>
     <Round/>
@@ -178,12 +179,15 @@ const Smart = () => <Item>
 </Item>
 const Experience = () => <Item>
     <Round/>
-    <b>мировой опыт<br/></b>
-    мы являемся партнерами
-    крупнейшей <Mbr/>Сингапурской
-    компании с присутствием <Mbr/>
-    на рынке пауршеринга
-    более 2-ух лет
+    <b>Нет операционных расходовт<br/></b>
+    Вам не нужны сотрудники и офис, <Mbr/>чтобы запустить бизнес. <Mbr/>
+    Работа сервиса автоматизирована и<br/>
+    управляется через онлайн платформу
 </Item>
+
+
+
+
+
 
 export default Advantages

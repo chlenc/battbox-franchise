@@ -267,7 +267,7 @@ export default class Calculator extends React.Component<{}, IState> {
                 <OutputField text="Выручка в год" value={profit * 12} dem={"₽"}/><br/><br/>
                 <Button css={showInMobileStyle} onClick={this.handleBackToCalculate}>Изменить данные</Button>
                 <Title css={[css`font-size: 1.9vw`, hideInMobileStyle]}>Запросить подробный рассчет</Title><br/><br/>
-                <div css={hideInMobileStyle}><ContactInputs resultPageForm/></div>
+                <div css={hideInMobileStyle}><ContactInputs /></div>
                 <Description css={showInMobileStyle}>
                     <br/>Данный калькулятор основан на теоретической модели в г. Москва. Более подробный
                     калькулятор вы можете запросить у менеджера</Description>
@@ -286,7 +286,7 @@ export default class Calculator extends React.Component<{}, IState> {
                           fill="#4A4A49"/>
                 </svg>
                 <Title css={css`text-align: center !important;margin-bottom: 46px`}>Ваши контакты для связи</Title>
-                <ContactInputs buttonMargin={96}/>
+                <ContactInputs />
                 <br/><br/>
             </ContactsBody>
             }

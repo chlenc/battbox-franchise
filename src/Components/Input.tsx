@@ -3,34 +3,38 @@ import styled from "@emotion/styled";
 import { colors, fonts } from "@src/vars";
 
 export default styled.input`
-background: ${colors.disabld};
-border-radius: 1px;
-outline: none;
-border: 1px solid transparent;
-text-align: center;
-cursor: text;
-padding: 0;
-${fonts.roboto_black_20};
-width: 250px;
+background: transparent;
 height: 70px;
-
-@media(max-width: 1380px){
-${fonts.roboto_black_18};
-width: 200px;
-height: 48px;
-}
-@media(max-width: 1200px){ width: 180px}
-@media(max-width: 1000px){ width: 150px}
-@media(max-width: 880px){ width: 130px}
-@media(max-width: 768px){ width: 100%}
+width: 100%;
+cursor: text;
+mix-blend-mode: normal;
+border: 2px solid #1F5F62;
+box-sizing: border-box;
+border-radius: 12px;
+outline: none;
+text-align: center;
+padding: 0;
+${fonts.input_font};
 
 &::placeholder{
 color: ${colors.gray};
 }
 
-&:focus{
-border: 1px solid #9AF9F9;
+@media(max-width: 1280px){
+  height: 50px;
 }
-
+@media(max-width: 768px){
+    height: 48px;
+    background: rgb(46, 155, 152);
+    border-radius: 10px;
+    border-color: rgb(46, 155, 152);
+    color: ${colors.white};
+    text-align: left;
+    padding: 0 12px;
+        
+    &::placeholder{
+      color: ${colors.white};
+    }
+}
 
 `

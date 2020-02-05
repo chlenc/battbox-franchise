@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import styled from '@emotion/styled';
 import Input from '@src/Components/Input';
 import Button from '@src/Components/Button';
-import { css, jsx } from '@emotion/core';
-import { colors, fonts, roboto } from '@src/vars';
+import {css, jsx} from '@emotion/core';
+import {colors, fonts, roboto} from '@src/vars';
 import axios from 'axios';
 
 const Root = styled.div`
@@ -13,11 +13,14 @@ margin: 0 -10px;
 & > * {
 margin: 0 10px;
 }
+@media(max-width: 1280px){
+    margin: 0 -8px;
+    & > * {
+      margin: 0 8px;
+    }
+}
 
-
-padding-bottom: 120px;
 @media(max-width: 768px){
-  padding-bottom:0;
   margin: -8px 0;
   width: 100%;
   flex-direction: column;
@@ -28,9 +31,6 @@ padding-bottom: 120px;
 `;
 
 interface IProps {
-    buttonMargin?: number
-    resultPageForm?: boolean
-
 }
 
 interface IState {
@@ -50,80 +50,28 @@ interface IState {
 const InputField = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 9;
+  @media(max-width: 1280px){
+    flex: 1;
+  }
+`;
+const ButtonField = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 14;
+  @media(max-width: 1280px){
+    flex: 1;
+  }
 `;
 
 const ErrorText = styled.div`
 ${fonts.roboto_white_15};
-@media(max-width: 768px){
-display: none;
-}
 font-size: 14px;
 color: #FF0000;
 margin-top: 6px;
 `;
 
-const DoneText = styled.div`
-${fonts.roboto_white_36};
-max-width: 720px;
-color: #15E9E9;
-margin-bottom: 40px;
-@media(max-width: 768px){
-${fonts.roboto_white_24};
-text-align: center;
-max-width: 470px;
-color: #15E9E9;
-}
-@media(max-width: 378px){
-${fonts.roboto_white_20};
-color: #15E9E9;
-}
-`;
 
-const UserDetailInput = styled.input`
-background-color: ${colors.aquaDisabled};
-border-radius: 4px;
-height: 2.6vw;
-border: 1px solid transparent;
-&::placeholder{
-  ${roboto};
-  color: ${colors.white};
-  font-size: 0.9vw;
-}
-
-${roboto};
-color: ${colors.white};
-font-size: 0.9vw;
-outline: none;
-flex: 1;
-`;
-const UserDetailWrapper = styled.div`
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-margin-bottom: 2.6vw;
-`;
-const UserDetailRow = styled.div`
-display: flex;
-justify-content: space-between;
-margin: -0.4vw;
-flex: 1;
-padding-bottom: 1vw;
-& > * {
-margin: 0.4vw;
-}
-`;
-const resultPageDoneStyle = css`
-${fonts.roboto_white_24};
-max-width: 720px;
-color: #000;
-margin-bottom: 40px;
-@media(max-width: 1280px){
-${fonts.roboto_white_15};
-text-align: left;
-max-width: 470px;
-color: #000;
-}
-`;
 export default class ContactInputs extends React.Component<IProps, IState> {
 
     state = {
@@ -198,58 +146,42 @@ export default class ContactInputs extends React.Component<IProps, IState> {
 
     render() {
         const {mail, name, phone, city, ismail, isname, isphone, iscity, isDone, isLoading} = this.state;
-        const {resultPageForm} = this.props;
-        if (isLoading) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные
-            отправляются...</DoneText>;
-        if (isDone) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные отправленны! В ближайшее
-            время мы с вами свяжемся!</DoneText>;
-        return resultPageForm ? <Fragment>
-                <UserDetailWrapper>
-                    <UserDetailRow>
-                        <UserDetailInput placeholder="Ваше имя" onChange={this.handleChangeMail} css={getStyle(ismail)}
-                                         value={mail}/>
-                        <UserDetailInput placeholder="Ваш город" onChange={this.handleChangeName} css={getStyle(isname)}
-                                         value={name}/>
-                    </UserDetailRow>
-                    <UserDetailRow>
-                        <UserDetailInput placeholder="Ваше E-mail" onChange={this.handleChangePhone} css={getStyle(isphone)}
-                                         value={phone}/>
-                        <UserDetailInput placeholder="Ваше телефон" onChange={this.handleChangeCity} css={getStyle(iscity)}
-                                         value={city}/>
-                    </UserDetailRow>
-                </UserDetailWrapper>
-                <Button onClick={this.handleSubmit} css={css`background-color: ${colors.white}`}>Отправить</Button>
-            </Fragment>
-            : <Root>
-                <InputField>
-                    <Input onChange={this.handleChangeMail} css={getStyle(ismail)} value={mail}
-                           placeholder="Ваш E-mail"/>
-                    {ismail === false && <ErrorText>Неверно заполнено</ErrorText>}
-                </InputField>
-                <InputField>
-                    <Input onChange={this.handleChangeName} css={getStyle(isname)} value={name}
-                           placeholder="Ваше имя"/>
-                    {isname === false && <ErrorText>Неверно заполнено</ErrorText>}
-                </InputField>
-                <InputField>
-                    <Input onChange={this.handleChangePhone} css={getStyle(isphone)} value={phone}
-                           placeholder="Ваш телефон"/>
-                    {isphone === false && <ErrorText>Неверно заполнено</ErrorText>}
-                </InputField>
-                <InputField css={css`padding-bottom: ${this.props.buttonMargin || 0}px`}>
-                    <Input onChange={this.handleChangeCity} css={getStyle(iscity)} value={city}
-                           placeholder="Ваш город"/>
-                    {iscity === false && <ErrorText>Неверно заполнено</ErrorText>}
-                </InputField>
-                <Button onClick={this.handleSubmit}>Отправить</Button>
-            </Root>;
+        // if (isLoading) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные
+        //     отправляются...</DoneText>;
+        // if (isDone) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные отправленны! В ближайшее
+        //     время мы с вами свяжемся!</DoneText>;
+        return <Root>
+            <InputField>
+                <Input onChange={this.handleChangeMail} css={getStyle(ismail)} value={mail}
+                       placeholder="Ваш E-mail"/>
+                {ismail === false && <ErrorText>Неверно заполнено</ErrorText>}
+            </InputField>
+            <InputField>
+                <Input onChange={this.handleChangeName} css={getStyle(isname)} value={name}
+                       placeholder="Ваше имя"/>
+                {isname === false && <ErrorText>Неверно заполнено</ErrorText>}
+            </InputField>
+            <InputField>
+                <Input onChange={this.handleChangePhone} css={getStyle(isphone)} value={phone}
+                       placeholder="Ваш телефон"/>
+                {isphone === false && <ErrorText>Неверно заполнено</ErrorText>}
+            </InputField>
+            <InputField>
+                <Input onChange={this.handleChangeCity} css={getStyle(iscity)} value={city}
+                       placeholder="Ваш город"/>
+                {iscity === false && <ErrorText>Неверно заполнено</ErrorText>}
+            </InputField>
+            <ButtonField>
+                <Button onClick={this.handleSubmit}>Получить</Button>
+            </ButtonField>
+        </Root>;
     }
 }
 
 
 function getStyle(valid?: boolean) {
-    if (valid === true) return css`background-color: #9AF9F9`;
-    else if (valid === false) return css` border-color: #FF0000;`;
+    if (valid === true) return css`background-color: rgb(50,176,171) !important;border-color: rgb(50,176,171) !important;`;
+    else if (valid === false) return css` border-color: #FF0000 !important;`;
     return undefined;
 }
 

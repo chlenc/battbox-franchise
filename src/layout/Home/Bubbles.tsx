@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React, { FC, Fragment } from "react";
 import { css, jsx } from "@emotion/core";
-import { bounce } from "@src/layout/Homepage/Waves";
+import { bounce } from "@src/layout/Home/Waves";
 
 const b1 = css`
 position: absolute;

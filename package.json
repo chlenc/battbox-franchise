@@ -1,7 +1,7 @@
 {
   "name": "battbox",
   "homepage": "https://chlenc.github.io/battbox-franchise/",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "node scripts/updateVersion.js && gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
@@ -17,12 +17,14 @@
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "@types/react-dom": "^16.9.4",
+    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.7.0",
     "emotion": "^10.0.23",
     "gh-pages": "^2.1.1",
     "rc-tooltip": "^4.0.0-alpha.3",
-    "react": "^16.12.0"
+    "react": "^16.12.0",
+    "react-swipeable": "^5.5.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.4",

@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { render } from 'react-dom';
-require('dotenv').config()
+import {render} from 'react-dom';
+
 import App from './layout/App';
 import './styles.less';
-console.log('v1.0.2')
+
+require('dotenv').config()
+
+const version = require('../package.json').version;
+console.log(version)
 render(<App/>, document.getElementById('container')!);

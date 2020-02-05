@@ -1,95 +1,134 @@
 /** @jsx jsx */
 import React from "react";
 import styled from "@emotion/styled";
-import { fonts } from "@src/vars";
-import { css, jsx } from "@emotion/core";
-import {
-    Arrow,
-    Icn1,
-    Icn1m,
-    Icn2,
-    Icn2m,
-    Icn3,
-    Icn3m,
-    Icn4,
-    Icn4m,
-    Icn5,
-    Icn5m,
-    Icn6,
-    Icn6m,
-    Icn7, Icn7m, SmallArrow
-} from "@src/layout/WeGive/icons";
+import {colors, fonts, mainPadding} from "@src/vars";
+import {css, jsx} from "@emotion/core";
+import icn1 from './icn1.svg'
+import icn2 from './icn2.svg'
+import icn3 from './icn3.svg'
+import icn4 from './icn4.svg'
+import icn5 from './icn5.svg'
+import icn6 from './icn6.svg'
+import bigArrow from './bigArrow.svg'
+import lilArrow from './lilArrow.svg'
 
 
 const Root = styled.div`
-  padding: 74px 14vw 40px 14vw;
-  @media(max-width: 1800px){ padding: 74px 10vw 40px 10vw;} 
-  @media(max-width: 1500px){ padding: 74px 5vw 40px 5vw;} 
-  @media(max-width: 1000px){ padding: 74px 15vw 40px 15vw;} 
-  @media(max-width: 800px){ padding: 74px 10vw 40px 10vw;} 
-  @media(max-width: 600px){ padding: 74px 5vw 40px 5vw;} 
+background: ${colors.gray};
+${mainPadding};
+padding-bottom: 240px;
+
+@media(max-width: 1280px){
+padding-bottom: 150px;
+}
+
+@media(max-width: 768px){
+padding-bottom: 128px;
+}
 `
 
 const Title = styled.div`
-${fonts.gotham_black_45_medium};
-margin-bottom: 60px;
-@media(max-width: 1280px){${fonts.gotham_black_32_medium};}
-@media(max-width: 768px){${fonts.gotham_black_22_medium};}
-`
-const Text = styled.div`
-${fonts.gotham_black_24_medium};
-width: 200px;
-@media(max-width: 1280px){${fonts.gotham_black_18_medium};width: 100px;}
-@media(max-width: 1000px){width: 180px;}
-margin-top: 35px;
+${fonts.block_title};
 white-space: nowrap;
-text-align: left!important;
 `
 
-const Row = styled.div`
+const Item = styled.div`
+display: flex;
+flex-direction: column;
+width: 140px;
+@media(max-width: 1280px){
+   width: 124px;
+}
+`
+
+const Icon = styled.div`
+    width: 140px;
+    height: 140px;
+    margin-bottom: 40px;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-position:  center;
+    background-size: contain;
+    @media(max-width: 1280px){
+        width: 124px;
+        height: 124px;
+        margin-bottom: 25px;
+    }
+`
+const Container = styled.div`
 display: flex;
 justify-content: space-between;
-align-items: center;
-margin-bottom: 140px;
-@media(max-width: 1000px){
-  flex-direction: column;
-  margin-bottom: 0;
-} 
+overflow-x: scroll;
 
+padding-top: 85px;
+padding-bottom: 171px;
+
+margin: 0 -60px;
+& > * {margin: 0 60px;}
+
+@media(max-width: 1280px){
+padding-top: 75px;
+padding-bottom: 124px;
+margin: 0 -32px;
+& > * {margin: 0 32px;}
+}
+
+@media(max-width: 768px){
+padding-top: 35px;
+padding-bottom: 48px;
+margin: 0 -15px;
+& > * {margin: 0 15px;}
+}
 `
 
-const D = styled.div`
+const Text = styled.div`
+${fonts.block_text};
+`
+
+const NotIncludedRoot = styled.div`
 display: flex;
+@media(max-width: 768px){
 flex-direction: column;
-@media(max-width: 1000px){
-  display: none;
-}`
-const M = styled.div`
+}
+`
+const NotIncludedTitle = styled.div`
+display: flex;
+flex-direction: column; 
+padding-right: 116px; 
 position: relative;
-flex-direction: column;
-display: none;
-align-items: center;
-width: 100%;
-@media(max-width: 1000px){
-display: flex;
+@media(max-width: 768px){
+padding-bottom: 45px;
+}
+
+`
+
+const notIncludedIconStyle =css`
+position: absolute;
+right: 40px; 
+top: 30%;
+width:222px;
+height:93px;
+background-image: url(${bigArrow});
+@media(max-width: 768px){
+  background-image: url(${lilArrow});
+  width:57px;
+  height:63px;
+  top: 20px;
+  left: 50%;
 }
 `
 
-const SmallText = styled.div`
-${fonts.gotham_black_22};
-@media(max-width: 1280px){${fonts.gotham_black_18};}
-@media(max-width: 1000px){${fonts.gotham_black_15};margin-top: 50px}
- 
-`;
-
-const texts = {
-    consultation: <Text>Консультацию <br/>и опыт</Text>,
-    application: <Text>Приложение <br/>для iOS/Android</Text>,
-    network: <Text>Наличие <br/>зарядок в сети</Text>,
-    admin: <Text>Административную <br/>платформу</Text>,
-    support: <Text>Клиентскую <br/>поддержку24/7</Text>,
-    acquire: <Text>Эквайринг</Text>
-}
+const ScrollPlaceholder = () =>  <svg
+    css={css`
+    display: none;
+    @media(max-width: 768px){
+    display: block;
+    padding-bottom: 85px;
+    }
+    `}
+    width="24" height="8" viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="24" height="8" rx="4" fill="#01FFFF"/>
+</svg>
 
 export default class WeGive extends React.Component {
 
@@ -97,52 +136,49 @@ export default class WeGive extends React.Component {
 
         return <Root>
             <Title>Мы даем:</Title>
+            <Container>
+                <Item>
+                    <Icon css={css`background-image: url(${icn1})`}/>
+                    <Text>Консультацию и опыт</Text>
+                </Item>
+                <Item>
+                    <Icon css={css`background-image: url(${icn2})`}/>
+                    <Text>Приложение для iOS/Android</Text>
+                </Item>
+                <Item>
+                    <Icon css={css`background-image: url(${icn3})`}/>
+                    <Text>Наличие зарядок в сети</Text>
+                </Item>
+                <Item>
+                    <Icon css={css`background-image: url(${icn4})`}/>
+                    <Text>Административную платформу</Text>
+                </Item>
+                <Item>
+                    <Icon css={css`background-image: url(${icn5})`}/>
+                    <Text>Клиентскую поддержку 24/7</Text>
+                </Item>
+                <Item>
+                    <Icon css={css`background-image: url(${icn6})`}/>
+                    <Text>Эквайринг</Text>
+                </Item>
 
-            <D>
-                <Row>
-                    <Icn1 text={texts.consultation}/>
-                    <Icn3 text={texts.application}/>
-                    <Icn5 text={texts.network}/>
-                </Row>
-            </D>
-            <M>
-                <Row>
-                    <Icn1m text={texts.consultation}/>
-                    <Icn2m text={texts.application}/>
-                    <Icn3m text={texts.network}/>
-                </Row>
-            </M>
-            <D>
-                <Row>
-                    <Icn2 text={texts.admin}/>
-                    <Icn4 text={texts.support}/>
-                    <Icn6 text={texts.acquire}/>
-                </Row>
-            </D>
-            <M>
-                <Row>
-                    <Icn4m text={texts.admin}/>
-                    <Icn5m text={texts.support}/>
-                    <Icn6m text={texts.acquire}/>
-                </Row>
-            </M>
-            <Row css={css`justify-content: flex-start; display: flex!important;`}>
-                <D css={css`flex-direction: row;align-items: baseline;`}>
-                    <Icn7 text={<Text css={css`text-decoration: underline`}>Не включено</Text>}/>
-                    <Arrow/>
-                </D>
-                <M>
-                    <Icn7m text={<Text css={css`text-decoration: underline`}>Не включено</Text>}/>
-                    <SmallArrow/>
-                </M>
-                <SmallText>
-                    услуги по доставке оборудования в ваш город<br/><br/>
-                    брендирование power bank по желанию франчайзинга<br/>
-                    <small>(в случае, если у вас уже есть рекламодатель)</small><br/><br/>
-                    эксплуатационные расходы на интернет связь<br/><br/>
-                    поддержание работособности и чистоты станций
-                </SmallText>
-            </Row>
+            </Container>
+            <ScrollPlaceholder/>
+            <NotIncludedRoot>
+                <NotIncludedTitle>
+                    <Title>Не включено</Title>
+                    <Icon css={notIncludedIconStyle} />
+
+                </NotIncludedTitle>
+               
+                <Text css={css`max-width: 644px`}>
+                    Услуги по доставке оборудования в ваш город<br/><br/>
+                    Брендирование power bank по желанию франчайзи
+                    (в случае, если у вас уже есть рекламодатель)<br/><br/>
+                    Эксплуатационные расходы на интернет связь<br/><br/>
+                    Поддержание работособности и чистоты станций<br/><br/>
+                </Text>
+            </NotIncludedRoot>
         </Root>
     }
 }
