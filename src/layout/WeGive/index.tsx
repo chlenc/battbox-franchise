@@ -11,7 +11,7 @@ import icn5 from './icn5.svg'
 import icn6 from './icn6.svg'
 import bigArrow from './bigArrow.svg'
 import lilArrow from './lilArrow.svg'
-
+import ScrollBar from 'react-perfect-scrollbar'
 
 const Root = styled.div`
 background: ${colors.gray};
@@ -55,7 +55,8 @@ const Icon = styled.div`
         margin-bottom: 25px;
     }
 `
-const Container = styled.div`
+
+const container = css`
 display: flex;
 justify-content: space-between;
 overflow-x: scroll;
@@ -79,6 +80,7 @@ padding-bottom: 48px;
 margin: 0 -15px;
 & > * {margin: 0 15px;}
 }
+
 `
 
 const Text = styled.div`
@@ -91,6 +93,7 @@ display: flex;
 flex-direction: column;
 }
 `
+
 const NotIncludedTitle = styled.div`
 display: flex;
 flex-direction: column; 
@@ -102,7 +105,7 @@ padding-bottom: 45px;
 
 `
 
-const notIncludedIconStyle =css`
+const notIncludedIconStyle = css`
 position: absolute;
 right: 40px; 
 top: 30%;
@@ -118,7 +121,7 @@ background-image: url(${bigArrow});
 }
 `
 
-const ScrollPlaceholder = () =>  <svg
+const ScrollPlaceholder = () => <svg
     css={css`
     display: none;
     @media(max-width: 768px){
@@ -136,7 +139,7 @@ export default class WeGive extends React.Component {
 
         return <Root>
             <Title>Мы даем:</Title>
-            <Container>
+            <ScrollBar  css={container}>
                 <Item>
                     <Icon css={css`background-image: url(${icn1})`}/>
                     <Text>Консультацию и опыт</Text>
@@ -161,16 +164,17 @@ export default class WeGive extends React.Component {
                     <Icon css={css`background-image: url(${icn6})`}/>
                     <Text>Эквайринг</Text>
                 </Item>
+            </ScrollBar>
 
-            </Container>
+
             <ScrollPlaceholder/>
             <NotIncludedRoot>
                 <NotIncludedTitle>
                     <Title>Не включено</Title>
-                    <Icon css={notIncludedIconStyle} />
+                    <Icon css={notIncludedIconStyle}/>
 
                 </NotIncludedTitle>
-               
+
                 <Text css={css`max-width: 644px`}>
                     Услуги по доставке оборудования в ваш город<br/><br/>
                     Брендирование power bank по желанию франчайзи

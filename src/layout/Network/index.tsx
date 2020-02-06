@@ -7,6 +7,7 @@ import icn1 from './icn1.svg'
 import icn2 from './icn2.svg'
 import icn3 from './icn3.svg'
 import icn4 from './icn4.svg'
+import ScrollBar from 'react-perfect-scrollbar'
 
 
 const Root = styled.div`
@@ -51,7 +52,7 @@ const Icon = styled.div`
         margin-bottom: 25px;
     }
 `
-const Container = styled.div`
+const container = styled.div`
 display: flex;
 justify-content: space-between;
 overflow-x: scroll;
@@ -103,7 +104,7 @@ export default class Network extends React.Component {
 
         return <Root>
             <Title>Крупнейшая сеть пауршеринга в России</Title>
-            <Container>
+            <ScrollBar  css={container}>
                 <Item>
                     <Icon css={css`background-image: url(${icn1})`}/>
                     <TextTitle>23 000</TextTitle>
@@ -124,7 +125,7 @@ export default class Network extends React.Component {
                     <TextTitle>94 рубля </TextTitle>
                     <Text>Средний чек</Text>
                 </Item>
-            </Container>
+            </ScrollBar>
             <ScrollPlaceholder/>
         </Root>
     }

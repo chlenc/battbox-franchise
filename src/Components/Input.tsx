@@ -15,6 +15,7 @@ outline: none;
 text-align: center;
 padding: 0;
 box-shadow: none;
+-webkit-appearance: none;
 ${fonts.input_font};
 
 &::placeholder{
