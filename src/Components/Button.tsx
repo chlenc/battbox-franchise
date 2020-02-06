@@ -13,11 +13,11 @@ cursor: text;
 mix-blend-mode: normal;
 box-sizing: border-box;
 outline: none;
-text-align: center;
 padding: 0;
 ${fonts.input_font};
 color: ${colors.white};
 ${gotham_bold};
+text-align: center;
 
 @media(max-width: 1280px){
   height: 50px;

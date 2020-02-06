@@ -5,7 +5,7 @@ import Waves from "@src/layout/Home/Waves";
 import Bubbles from "@src/layout/Home/Bubbles";
 import Battery from "@src/layout/Home/Battery";
 import Head from "./Head";
-import GetContactField from "@src/layout/GetContactsField";
+import GetContactField from "@src/Components/GetContactsField";
 
 const Root = styled.div`
 background-color: ${colors.bgDark};

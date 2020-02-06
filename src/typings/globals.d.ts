@@ -5,4 +5,5 @@ declare module '*.ttf';
 declare module '*.woff';
 declare module 'current-device';
 declare module 'rc-tooltip';
+declare module 'rc-slider';
 

@@ -3,25 +3,25 @@ import React from "react";
 import styled from "@emotion/styled";
 import {colors, fonts, mainPadding} from "@src/vars";
 import {css, jsx} from "@emotion/core";
-import icn1 from './icn1.svg'
-import icn2 from './icn2.svg'
-import icn3 from './icn3.svg'
-import icn4 from './icn4.svg'
 import ScrollBar from 'react-perfect-scrollbar'
+import icn1 from './img1.svg'
+import icn2 from './img2.svg'
+import icn3 from './img3.svg'
+import icn4 from './img4.svg'
 
 
 const Root = styled.div`
 background: ${colors.gray};
 ${mainPadding};
-padding-bottom: 240px;
+//padding-bottom: 240px;
 padding-top: 48px;
 
 @media(max-width: 1280px){
-padding-bottom: 150px;
+//padding-bottom: 150px;
 }
 
 @media(max-width: 768px){
-padding-bottom: 128px;
+padding-bottom: 0;
 }
 `
 
@@ -52,10 +52,9 @@ const Icon = styled.div`
         margin-bottom: 25px;
     }
 `
-const container = styled.div`
+const Container = styled.div`
 display: flex;
 justify-content: space-between;
-overflow-x: scroll;
 
 padding-top: 85px;
 padding-bottom: 171px;
@@ -85,18 +84,19 @@ ${fonts.block_about_title};
 const Text = styled.div`
 ${fonts.block_text};
 `
-
-const ScrollPlaceholder = () =>  <svg
-    css={css`
+const ScrollPlaceholderRoot = styled.svg`
     display: none;
     @media(max-width: 768px){
     display: block;
     padding-bottom: 85px;
     }
-    `}
-    width="24" height="8" viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="24" height="8" rx="4" fill="#01FFFF"/>
-</svg>
+`
+export const ScrollPlaceholder = () =>
+    <ScrollPlaceholderRoot width="40" height="8" viewBox="0 0 40 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="36" cy="4" r="4" fill="#2FD5CE"/>
+        <rect width="24" height="8" rx="4" fill="#01FFFF"/>
+    </ScrollPlaceholderRoot>
+
 
 export default class Network extends React.Component {
 
@@ -104,27 +104,29 @@ export default class Network extends React.Component {
 
         return <Root>
             <Title>Крупнейшая сеть пауршеринга в России</Title>
-            <ScrollBar  css={container}>
-                <Item>
-                    <Icon css={css`background-image: url(${icn1})`}/>
-                    <TextTitle>23 000</TextTitle>
-                    <Text>Клиентов</Text>
-                </Item>
-                <Item>
-                    <Icon css={css`background-image: url(${icn2})`}/>
-                    <TextTitle>100 000 + </TextTitle>
-                    <Text>Аренд</Text>
-                </Item>
-                <Item>
-                    <Icon css={css`background-image: url(${icn3})`}/>
-                    <TextTitle>500 + </TextTitle>
-                    <Text>Партнеров</Text>
-                </Item>
-                <Item>
-                    <Icon css={css`background-image: url(${icn4})`}/>
-                    <TextTitle>94 рубля </TextTitle>
-                    <Text>Средний чек</Text>
-                </Item>
+            <ScrollBar>
+                <Container>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn1})`}/>
+                        <TextTitle>23 000</TextTitle>
+                        <Text>Клиентов</Text>
+                    </Item>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn2})`}/>
+                        <TextTitle>100 000 + </TextTitle>
+                        <Text>Аренд</Text>
+                    </Item>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn3})`}/>
+                        <TextTitle>500 + </TextTitle>
+                        <Text>Партнеров</Text>
+                    </Item>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn4})`}/>
+                        <TextTitle>94 рубля </TextTitle>
+                        <Text>Средний чек</Text>
+                    </Item>
+                </Container>
             </ScrollBar>
             <ScrollPlaceholder/>
         </Root>

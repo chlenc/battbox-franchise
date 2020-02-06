@@ -31,36 +31,107 @@ input::-webkit-inner-spin-button {
 
 
 :global {
-  .rc-tooltip {
-    background-color: transparent;
-    opacity: unset;
-  }
+  //.rc-tooltip {
+  //  background-color: transparent;
+  //  opacity: unset;
+  //}
+  //
+  //.rc-tooltip-inner {
+  //  padding: 16px 14px;
+  //  border-radius: 10px;
+  //  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  //  border: unset;
+  //  width: 270px;
+  //}
+  //
+  //.rc-tooltip-arrow {
+  //  border-color: transparent !important;
+  //}
 
-  .rc-tooltip-inner {
-    padding: 16px 14px;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-    border: unset;
-    width: 270px;
-  }
 
-  .rc-tooltip-arrow{
-    border-color: transparent !important;
-  }
-
-
-  .ps__rail-x{
+  .ps__rail-x {
     bottom: 100px !important;
-    @media(max-width: 1280px){
+    @media (max-width: 1280px) {
       bottom: 80px !important;
     }
-    @media(max-width: 768px){
-      padding-top: 20px !important;
+    @media (max-width: 768px) {
+      bottom: 10px !important;
     }
 
     background-color: transparent !important;
   }
 
+  .rc-slider {
 
+
+    .rc-slider-mark {
+      top: -1.5vw;
+      @media(max-width: 768px){
+        top: -30px;
+      }
+    }
+
+    .rc-slider-dot{
+      display: none;
+    }
+
+    .rc-slider-handle{
+      border: none;
+      width: 16px;
+      height: 16px;
+      margin-top: -7px;
+      background: #15E9E9;
+    }
+    .rc-slider-step{
+      background: transparent;
+    }
+
+    .rc-slider-track{
+      background: #15E9E9;
+    }
+
+    .rc-slider-rail{
+      height: 14px;
+      background: #000;
+      border-radius: 32px;
+      margin-top: -5px;
+
+    }
+
+    .rc-slider-mark-text{
+      font-family: GothamPro-Light !important;
+      font-weight: 300;
+      font-size: 1.2vw !important;
+      line-height: 1.4vw !important;
+      text-align: center;
+      color: #575A64;
+      @media(max-width: 768px){
+        font-size: 18px !important;
+        line-height: 22px !important;
+      }
+    }
+  }
+  .rc-slider-tooltip-content{
+
+    .rc-slider-tooltip-inner {
+      box-shadow: none !important;
+      -moz-window-shadow: none !important;
+      -webkit-window-shadow: none !important;
+      background-color: transparent !important;
+      font-family: GothamPro !important;
+      text-align: center !important;
+      color: #15E9E9 !important;
+      font-size: 1.2vw !important;
+      line-height: 1.4vw !important;
+      @media(max-width: 768px){
+        font-size: 20px !important;
+        line-height: 24px !important;
+      }
+    }
+
+    .rc-slider-tooltip-arrow {
+      display: none !important;
+    }
+  }
 }
 

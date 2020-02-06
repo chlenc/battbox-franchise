@@ -5,6 +5,9 @@ import HowItWorks from "@src/layout/HowItWorks";
 import WeGive from "@src/layout/WeGive";
 import Advantages from "@src/layout/Advantages";
 import Network from "@src/layout/Network";
+import Tarif from "@src/layout/Tarif";
+import Calculator from '@src/layout/Calculator';
+import ChargedCities from "@src/layout/ChargedCities";
 
 export default class App extends React.Component {
 
@@ -16,6 +19,9 @@ export default class App extends React.Component {
             <WeGive/>
             <Advantages/>
             <Network/>
+            <Tarif/>
+            <Calculator/>
+            <ChargedCities/>
         </div>;
     }
 }

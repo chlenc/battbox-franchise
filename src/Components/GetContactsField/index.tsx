@@ -1,10 +1,13 @@
-import React, {FC, FunctionComponent, useState} from "react";
+/** @jsx jsx */
+
+import React, {FC, useState} from "react";
 import styled from "@emotion/styled";
 import {colors, fonts, gotham_bold, mainPadding} from "@src/vars";
-import ContactInputs from "@src/layout/GetContactsField/ContactInputs";
+import ContactInputs, {buttonDarkStyle} from "@src/Components/GetContactsField/ContactInputs";
 import {useWindowDimensions} from "@src/utils";
 import Button from "@src/Components/Button";
 import {Swipeable} from "react-swipeable";
+import {css, jsx} from "@emotion/core";
 
 const Root = styled.div`
 background: transparent;
@@ -57,7 +60,8 @@ const CloseStick = styled.div`
 `
 
 
-const GetContactField: FC<{ title?: string }> = ({title}) => {
+const GetContactField: FC<{ title?: string, hideTitle?: boolean, darkTheme?: boolean }>
+    = ({title, hideTitle, darkTheme}) => {
     const {width} = useWindowDimensions();
 
     const [isOpen, setValue] = useState(false);
@@ -67,11 +71,11 @@ const GetContactField: FC<{ title?: string }> = ({title}) => {
 
     return width > 768
         ? <Root>
-            <Title>{title}</Title>
-            <ContactInputs/>
+            {!hideTitle && <Title>{title}</Title>}
+            <ContactInputs darkTheme/>
         </Root>
-        : <>
-            <Button onClick={handleOpen}>{title}</Button>
+        : <div css={css`width: 100%`}>
+            <Button css={darkTheme && buttonDarkStyle} onClick={handleOpen}>{title}</Button>
             {isOpen &&
             <Swipeable onSwiped={handleClose}>
                 <ModalRoot>
@@ -82,6 +86,6 @@ const GetContactField: FC<{ title?: string }> = ({title}) => {
             </Swipeable>
             }
 
-        </>
+        </div>
 }
 export default GetContactField

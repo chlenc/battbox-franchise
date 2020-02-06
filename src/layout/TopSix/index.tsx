@@ -3,7 +3,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { colors, fonts } from "@src/vars";
 import { css, jsx } from "@emotion/core";
-import ContactInputs from "@src/layout/GetContactsField/ContactInputs";
+import ContactInputs from "@src/Components/GetContactsField/ContactInputs";
 const Root = styled.div`
 padding: 7vw;
 display: flex;

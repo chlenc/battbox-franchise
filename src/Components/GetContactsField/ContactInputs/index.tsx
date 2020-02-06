@@ -31,6 +31,7 @@ margin: 0 10px;
 `;
 
 interface IProps {
+    darkTheme?: boolean
 }
 
 interface IState {
@@ -71,6 +72,19 @@ color: #FF0000;
 margin-top: 6px;
 `;
 
+const inputDarkStyle = css`
+border: 2px solid #212225;
+color: ${colors.white};
+&::placeholder{
+color: ${colors.white};
+}
+`
+
+export const buttonDarkStyle = css`
+background: #15E9E9;
+border-color: #15E9E9;
+color: ${colors.black};
+`
 
 export default class ContactInputs extends React.Component<IProps, IState> {
 
@@ -146,43 +160,51 @@ export default class ContactInputs extends React.Component<IProps, IState> {
 
     render() {
         const {mail, name, phone, city, ismail, isname, isphone, iscity, isDone, isLoading} = this.state;
+        const {darkTheme} = this.props;
         // if (isLoading) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные
         //     отправляются...</DoneText>;
         // if (isDone) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные отправленны! В ближайшее
         //     время мы с вами свяжемся!</DoneText>;
         return <Root>
             <InputField>
-                <Input onChange={this.handleChangeMail} css={getStyle(ismail)} value={mail}
+                <Input onChange={this.handleChangeMail} css={getStyle(ismail, darkTheme)} value={mail}
                        placeholder="Ваш E-mail"/>
                 {ismail === false && <ErrorText>Неверно заполнено</ErrorText>}
             </InputField>
             <InputField>
-                <Input onChange={this.handleChangeName} css={getStyle(isname)} value={name}
+                <Input onChange={this.handleChangeName} css={getStyle(isname, darkTheme)} value={name}
                        placeholder="Ваше имя"/>
                 {isname === false && <ErrorText>Неверно заполнено</ErrorText>}
             </InputField>
             <InputField>
-                <Input onChange={this.handleChangePhone} css={getStyle(isphone)} value={phone}
+                <Input onChange={this.handleChangePhone} css={getStyle(isphone, darkTheme)} value={phone}
                        placeholder="Ваш телефон"/>
                 {isphone === false && <ErrorText>Неверно заполнено</ErrorText>}
             </InputField>
             <InputField>
-                <Input onChange={this.handleChangeCity} css={getStyle(iscity)} value={city}
+                <Input onChange={this.handleChangeCity} css={getStyle(iscity, darkTheme)} value={city}
                        placeholder="Ваш город"/>
                 {iscity === false && <ErrorText>Неверно заполнено</ErrorText>}
             </InputField>
             <ButtonField>
-                <Button onClick={this.handleSubmit}>Получить</Button>
+                <Button css={darkTheme && buttonDarkStyle} onClick={this.handleSubmit}>Получить</Button>
             </ButtonField>
         </Root>;
     }
 }
 
 
-function getStyle(valid?: boolean) {
-    if (valid === true) return css`background-color: rgb(50,176,171) !important;border-color: rgb(50,176,171) !important;`;
-    else if (valid === false) return css` border-color: #FF0000 !important;`;
-    return undefined;
+function getStyle(valid?: boolean, darkTheme?: boolean) {
+    if (valid === true) return css`
+    ${darkTheme ? inputDarkStyle : ''};
+    background-color: rgb(50,176,171) !important;
+    border-color: rgb(50,176,171) !important;
+`;
+    else if (valid === false) return css`
+    ${darkTheme ? inputDarkStyle : ''}; 
+    border-color: #FF0000 !important;
+`;
+    return darkTheme ? inputDarkStyle : undefined;
 }
 
 

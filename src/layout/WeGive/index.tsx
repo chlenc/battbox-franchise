@@ -12,6 +12,7 @@ import icn6 from './icn6.svg'
 import bigArrow from './bigArrow.svg'
 import lilArrow from './lilArrow.svg'
 import ScrollBar from 'react-perfect-scrollbar'
+import {ScrollPlaceholder} from "@src/layout/Network";
 
 const Root = styled.div`
 background: ${colors.gray};
@@ -41,7 +42,7 @@ width: 140px;
 }
 `
 
-const Icon = styled.div`
+export const Icon = styled.div`
     width: 140px;
     height: 140px;
     margin-bottom: 40px;
@@ -56,10 +57,10 @@ const Icon = styled.div`
     }
 `
 
-const container = css`
+const Container = styled.div`
 display: flex;
 justify-content: space-between;
-overflow-x: scroll;
+//overflow-x: scroll;
 
 padding-top: 85px;
 padding-bottom: 171px;
@@ -121,17 +122,7 @@ background-image: url(${bigArrow});
 }
 `
 
-const ScrollPlaceholder = () => <svg
-    css={css`
-    display: none;
-    @media(max-width: 768px){
-    display: block;
-    padding-bottom: 85px;
-    }
-    `}
-    width="24" height="8" viewBox="0 0 24 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="24" height="8" rx="4" fill="#01FFFF"/>
-</svg>
+
 
 export default class WeGive extends React.Component {
 
@@ -139,34 +130,34 @@ export default class WeGive extends React.Component {
 
         return <Root>
             <Title>Мы даем:</Title>
-            <ScrollBar  css={container}>
-                <Item>
-                    <Icon css={css`background-image: url(${icn1})`}/>
-                    <Text>Консультацию и опыт</Text>
-                </Item>
-                <Item>
-                    <Icon css={css`background-image: url(${icn2})`}/>
-                    <Text>Приложение для iOS/Android</Text>
-                </Item>
-                <Item>
-                    <Icon css={css`background-image: url(${icn3})`}/>
-                    <Text>Наличие зарядок в сети</Text>
-                </Item>
-                <Item>
-                    <Icon css={css`background-image: url(${icn4})`}/>
-                    <Text>Административную платформу</Text>
-                </Item>
-                <Item>
-                    <Icon css={css`background-image: url(${icn5})`}/>
-                    <Text>Клиентскую поддержку 24/7</Text>
-                </Item>
-                <Item>
-                    <Icon css={css`background-image: url(${icn6})`}/>
-                    <Text>Эквайринг</Text>
-                </Item>
+            <ScrollBar>
+                <Container>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn1})`}/>
+                        <Text>Консультацию и опыт</Text>
+                    </Item>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn2})`}/>
+                        <Text>Приложение для iOS/Android</Text>
+                    </Item>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn3})`}/>
+                        <Text>Наличие зарядок в сети</Text>
+                    </Item>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn4})`}/>
+                        <Text>Административную платформу</Text>
+                    </Item>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn5})`}/>
+                        <Text>Клиентскую поддержку 24/7</Text>
+                    </Item>
+                    <Item>
+                        <Icon css={css`background-image: url(${icn6})`}/>
+                        <Text>Эквайринг</Text>
+                    </Item>
+                </Container>
             </ScrollBar>
-
-
             <ScrollPlaceholder/>
             <NotIncludedRoot>
                 <NotIncludedTitle>

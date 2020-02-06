@@ -47,7 +47,7 @@ export const colors = {
 const fontTemplate = css`
 font-style: normal;
 font-weight: normal;
-text-align: center;
+text-align: left;
 z-index: 2;
 `;
 
@@ -99,7 +99,7 @@ export const fonts = {
   color: ${colors.gray};
   font-size: 20px;
   line-height: 24px;
- 
+  text-align: center;
   @media (max-width: 1280px) {
     font-size: 16px;
     line-height: 19px;
@@ -138,7 +138,7 @@ export const fonts = {
     }
 `,
     block_text: css`
-    ${gotham};
+    ${gotham_light};
     font-size: 24px;
     line-height: 29px;
     color: ${colors.white};

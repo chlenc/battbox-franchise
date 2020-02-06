@@ -141,13 +141,13 @@ const Advantages: React.FunctionComponent = () => <Root>
 
 const Station = () => <Item>
     <Round/>
-    <b>вандалостойкая станция <br/></b>
+    <b>Вандалостойкая станция <br/></b>
     все power bank заблокированы <Mbr/>
     с помощью электронного замка
 </Item>
 const Applications = () => <Item>
     <Round/>
-    <b>приложение для iOS и Android<br/></b>
+    <b>Приложение для iOS и Android<br/></b>
     быстрая регистрация,
     карта с зарядками, <Mbr/>
     автоматическое списание
@@ -163,7 +163,7 @@ const Network = () => <Item>
 </Item>
 const Profit = () => <Item>
     <Round/>
-    <b>дополнительная прибыль<br/></b>
+    <b>Дополнительная прибыль<br/></b>
     каждый power bank -
     это рекламная <Mbr/>площадка,
     ей вы распоряжаетесь <Mbr/>
@@ -172,7 +172,7 @@ const Profit = () => <Item>
 </Item>
 const Smart = () => <Item>
     <Round/>
-    <b>умная зарядка<br/></b>
+    <b>Умная зарядка<br/></b>
     наши power bank имеют MFI <Mbr/>
     сертификацию и кнопку плавного <Mbr/>
     пуска для безопасности смартфона
