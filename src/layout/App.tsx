@@ -8,6 +8,9 @@ import Network from "@src/layout/Network";
 import Tarif from "@src/layout/Tarif";
 import Calculator from '@src/layout/Calculator';
 import ChargedCities from "@src/layout/ChargedCities";
+import Necessary from "@src/layout/Necessary";
+import TopSix from "@src/layout/TopSix";
+import Footer from "@src/layout/Footer";
 
 export default class App extends React.Component {
 
@@ -22,6 +25,9 @@ export default class App extends React.Component {
             <Tarif/>
             <Calculator/>
             <ChargedCities/>
+            <Necessary/>
+            <TopSix/>
+            <Footer/>
         </div>;
     }
 }

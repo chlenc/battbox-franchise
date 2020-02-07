@@ -6,7 +6,9 @@ import {css, jsx} from "@emotion/core";
 import GetContactField from "@src/Components/GetContactsField";
 import Slider from 'rc-slider';
 import Tooltip from "rc-tooltip";
-import {Select, Option, FormInput} from "@src/layout/Calculator/Desctop";
+import {FormInput} from "@src/layout/Calculator/Desctop";
+import Select from '@src/Components/Select';
+import {Option} from 'rc-select';
 import {max, min} from "@src/layout/Calculator/index";
 
 const Handle = Slider.Handle;
@@ -122,17 +124,16 @@ export default class Mobile extends React.Component {
                 <CalculatorBlock>
                     <Row>
                         <CalculatorBlockTitle>Ваш город</CalculatorBlockTitle>
-                        <Select css={inputStyle} property="voucherCategoryClass" placeholder={"Ваш город"}>
-                            <Option></Option>
-                            <Option>Санкт-Петербург</Option>
-                            <Option>Самара</Option>
-                            <Option>Сахалин</Option>
-                            <Option>Саратов</Option>
+                        <Select css={css`width: 100%`}>
+                            <Option value="Санкт-Петербург">Санкт-Петербург</Option>
+                            <Option value="Самара">Самара</Option>
+                            <Option value="Сахалин">Сахалин</Option>
+                            <Option value="Саратов">Саратов</Option>
                         </Select>
                     </Row>
                     <Row>
                         <CalculatorBlockTitle>Количество станций</CalculatorBlockTitle>
-                        <FormInput css={[inputStyle, css`width: 90%`]} value={stantions}
+                        <FormInput css={[inputStyle, css`width: calc(100% - 36px);padding-left: 36px;`]} value={stantions}
                                    onChange={(e) => this.onChangeStantions(e.target.value)}
                                    type="number"/>
                     </Row>
@@ -165,11 +166,11 @@ export default class Mobile extends React.Component {
                     </Item>
 
                 </CalculatorBlock>
-                    <CalculatorTitle css={css`padding: 16px 0 ; color: white`}>Подробный рассчет</CalculatorTitle>
-                    <Text css={css`padding-bottom: 36px`}>Данный калькулятор основан на теоретической модели в г.
-                        Москве.<br/>
-                        Более подробный калькулятор вы можете запросить у менеджера</Text>
-                    <GetContactField title="Запросить" hideTitle darkTheme/>
+                <CalculatorTitle css={css`padding: 16px 0 ; color: white`}>Подробный рассчет</CalculatorTitle>
+                <Text css={css`padding-bottom: 36px`}>Данный калькулятор основан на теоретической модели в г.
+                    Москве.<br/>
+                    Более подробный калькулятор вы можете запросить у менеджера</Text>
+                <GetContactField title="Запросить" hideTitle darkTheme/>
             </Body>
         </Root>
     }
@@ -177,7 +178,6 @@ export default class Mobile extends React.Component {
 
 const handle = (props: any) => {
     const {value, dragging, index, ...restProps} = props;
-    console.log(value)
     return (
         <Tooltip
             prefixCls="rc-slider-tooltip"

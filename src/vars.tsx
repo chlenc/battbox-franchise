@@ -121,6 +121,21 @@ export const fonts = {
       line-height: 29px;;      
     }
 `,
+    block_small_title: css`
+    ${gotham_bold};
+    font-size: 42px;
+    line-height: 51px;
+    color: ${colors.white};
+    text-align: left;
+    @media (max-width: 1280px) {
+      font-size: 32px;
+      line-height: 39px;      
+    }
+    @media (max-width: 768px) {
+      font-size: 24px;
+      line-height: 29px;;      
+    }
+`,
 
     block_about_title: css`
     ${gotham_bold};

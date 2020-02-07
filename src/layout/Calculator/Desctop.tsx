@@ -7,7 +7,8 @@ import GetContactField from "@src/Components/GetContactsField";
 import Slider from 'rc-slider';
 import Tooltip from "rc-tooltip";
 import {max, min} from "@src/layout/Calculator/index";
-
+import Select from "@src/Components/Select";
+import {Option} from 'rc-select';
 const Handle = Slider.Handle;
 
 const Root = styled.div`
@@ -102,21 +103,12 @@ text-align: left;
 outline: none;
 box-shadow: none;
 border: none;
-padding:0  5%;
-`
-
-export const Select = styled.select`
-${inputStyle};
-width: 15vw;
+padding-left: 1.5vw;
 `
 
 export const FormInput = styled.input`
 ${inputStyle};
 width: 9vw;
-`
-
-export const Option = styled.option`
-  color: ${colors.white};
 `
 
 const Description = styled.div`
@@ -176,12 +168,11 @@ export default class Desktop extends React.Component{
                     <CalculatorBlock>
                         <Row css={css`align-items: center; margin-bottom: 2vw`}>
                             <CalculatorBlockTitle>Ваш город</CalculatorBlockTitle>
-                            <Select property="voucherCategoryClass" placeholder={"Ваш город"}>
-                                <Option></Option>
-                                <Option>Санкт-Петербург</Option>
-                                <Option>Самара</Option>
-                                <Option>Сахалин</Option>
-                                <Option>Саратов</Option>
+                            <Select css={css`width: 15vw;`}>
+                                <Option value="Санкт-Петербург">Санкт-Петербург</Option>
+                                <Option value="Самара">Самара</Option>
+                                <Option value="Сахалин">Сахалин</Option>
+                                <Option value="Саратов">Саратов</Option>
                             </Select>
                         </Row>
                         <Row css={css`align-items: center; margin-bottom: 3vw`}>
@@ -235,7 +226,6 @@ export default class Desktop extends React.Component{
 
 const handle = (props: any) => {
     const {value, dragging, index, ...restProps} = props;
-    console.log(value)
     return (
         <Tooltip
             prefixCls="rc-slider-tooltip"

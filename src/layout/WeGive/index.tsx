@@ -29,7 +29,7 @@ padding-bottom: 64px;
 `
 
 const Title = styled.div`
-${fonts.block_title};
+${fonts.block_small_title};
 white-space: nowrap;
 `
 

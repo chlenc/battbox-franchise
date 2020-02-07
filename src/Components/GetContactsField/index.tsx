@@ -60,8 +60,8 @@ const CloseStick = styled.div`
 `
 
 
-const GetContactField: FC<{ title?: string, hideTitle?: boolean, darkTheme?: boolean }>
-    = ({title, hideTitle, darkTheme}) => {
+const GetContactField: FC<{ title?: string, hideTitle?: boolean, darkTheme?: boolean,btnText?:string }>
+    = ({title, hideTitle, darkTheme,btnText}) => {
     const {width} = useWindowDimensions();
 
     const [isOpen, setValue] = useState(false);
@@ -72,10 +72,10 @@ const GetContactField: FC<{ title?: string, hideTitle?: boolean, darkTheme?: boo
     return width > 768
         ? <Root>
             {!hideTitle && <Title>{title}</Title>}
-            <ContactInputs darkTheme/>
+            <ContactInputs darkTheme={darkTheme}/>
         </Root>
         : <div css={css`width: 100%`}>
-            <Button css={darkTheme && buttonDarkStyle} onClick={handleOpen}>{title}</Button>
+            <Button css={darkTheme ? buttonDarkStyle : undefined} onClick={handleOpen}>{btnText || title}</Button>
             {isOpen &&
             <Swipeable onSwiped={handleClose}>
                 <ModalRoot>
