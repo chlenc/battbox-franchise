@@ -6,6 +6,8 @@ import Button from '@src/Components/Button';
 import {css, jsx} from '@emotion/core';
 import {colors, fonts, roboto} from '@src/vars';
 import axios from 'axios';
+import low from '@src/assets/icons/lowBattery.svg'
+import full from '@src/assets/icons/fullBattery.svg'
 
 const Root = styled.div`
 display: flex;
@@ -86,14 +88,36 @@ border-color: #15E9E9;
 color: ${colors.black};
 `
 
+const DoneTextRoot = styled.div`
+    ${fonts.block_text};
+    @media(max-width: 768px){
+        margin-top: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 20px;
+        line-height: 24px;
+        color: white !important;
+        & > * {margin: 10px 0}
+    }
+`
+
+const DoneText: React.FC<{ isDark?: boolean, isFull?:boolean }> = ({isDark, children, isFull}) =>
+        <DoneTextRoot css={css`color: ${isDark ? colors.white : colors.black};`}>
+            <img css={css`@media(min-width: 768px){display: none}`} src={isFull? full : low} alt="low"/>
+            {children}
+        </DoneTextRoot>
+
+
 export default class ContactInputs extends React.Component<IProps, IState> {
 
     state = {
-        mail: '',
-        name: '',
-        phone: '',
-        city: '',
-        // 'name': 'Алексей', 'city': 'Москва', 'phone': '89151272664', 'mail': 'alexnagorny.an@gmail.com',
+        // mail: '',
+        // name: '',
+        // phone: '',
+        // city: '',
+        'name': 'Алексей', 'city': 'Москва', 'phone': '89151272664', 'mail': 'alexnagorny.an@gmail.com',
         ismail: undefined,
         isname: undefined,
         isphone: undefined,
@@ -102,7 +126,6 @@ export default class ContactInputs extends React.Component<IProps, IState> {
         isDone: false,
         isLoading: false,
     };
-
 
     handleChangeMail = ({target: {value: mail}}: React.ChangeEvent<HTMLInputElement>) => {
         const ismail = validate(mail, 'mail');
@@ -161,10 +184,9 @@ export default class ContactInputs extends React.Component<IProps, IState> {
     render() {
         const {mail, name, phone, city, ismail, isname, isphone, iscity, isDone, isLoading} = this.state;
         const {darkTheme} = this.props;
-        // if (isLoading) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные
-        //     отправляются...</DoneText>;
-        // if (isDone) return <DoneText css={resultPageForm && resultPageDoneStyle}>Ваши данные отправленны! В ближайшее
-        //     время мы с вами свяжемся!</DoneText>;
+        if (isLoading) return <DoneText isDark={darkTheme}>Ваши данные отправляются...</DoneText>;
+        if (isDone) return <DoneText isDark={darkTheme} isFull>Ваши данные отправленны!<br/> В
+            ближайшее время мы с вами свяжемся!</DoneText>;
         return <Root>
             <InputField>
                 <Input onChange={this.handleChangeMail} css={getStyle(ismail, darkTheme)} value={mail}

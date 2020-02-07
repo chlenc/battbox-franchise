@@ -65,20 +65,17 @@ justify-content: space-between;
 padding-top: 85px;
 padding-bottom: 171px;
 
-margin: 0 -60px;
 & > * {margin: 0 60px;}
 
 @media(max-width: 1280px){
 padding-top: 75px;
 padding-bottom: 124px;
-margin: 0 -32px;
 & > * {margin: 0 32px;}
 }
 
 @media(max-width: 768px){
 padding-top: 35px;
 padding-bottom: 48px;
-margin: 0 -15px;
 & > * {margin: 0 15px;}
 }
 
@@ -132,7 +129,7 @@ export default class WeGive extends React.Component {
             <Title>Мы даем:</Title>
             <ScrollBar>
                 <Container>
-                    <Item>
+                    <Item css={css`margin-left: 0;`}>
                         <Icon css={css`background-image: url(${icn1})`}/>
                         <Text>Консультацию и опыт</Text>
                     </Item>
@@ -152,7 +149,7 @@ export default class WeGive extends React.Component {
                         <Icon css={css`background-image: url(${icn5})`}/>
                         <Text>Клиентскую поддержку 24/7</Text>
                     </Item>
-                    <Item>
+                    <Item  css={css`margin-right: 0;`}>
                         <Icon css={css`background-image: url(${icn6})`}/>
                         <Text>Эквайринг</Text>
                     </Item>

@@ -11,11 +11,22 @@ import ChargedCities from "@src/layout/ChargedCities";
 import Necessary from "@src/layout/Necessary";
 import TopSix from "@src/layout/TopSix";
 import Footer from "@src/layout/Footer";
+import Placeholder from "@src/layout/Placeholder";
 
 export default class App extends React.Component {
 
+    state = {
+        loading: true
+    }
+
+    componentDidMount(): void {
+        setTimeout(() => {
+            this.setState({loading: false})
+        }, 2000)
+    }
+
     render() {
-        return <div>
+        return <>
             <Home/>
             <About/>
             <HowItWorks/>
@@ -28,6 +39,8 @@ export default class App extends React.Component {
             <Necessary/>
             <TopSix/>
             <Footer/>
-        </div>;
+           {this.state.loading && <Placeholder/>}
+        </>;
+
     }
 }

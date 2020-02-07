@@ -59,20 +59,17 @@ justify-content: space-between;
 padding-top: 85px;
 padding-bottom: 171px;
 
-margin: 0 -60px;
 & > * {margin: 0 60px;}
 
 @media(max-width: 1280px){
 padding-top: 75px;
 padding-bottom: 165px;
-margin: 0 -32px;
 & > * {margin: 0 32px;}
 }
 
 @media(max-width: 768px){
 padding-top: 35px;
 padding-bottom: 48px;
-margin: 0 -15px;
 & > * {margin: 0 15px;}
 }
 `
@@ -106,7 +103,7 @@ export default class Network extends React.Component {
             <Title>Крупнейшая сеть пауршеринга в России</Title>
             <ScrollBar>
                 <Container>
-                    <Item>
+                    <Item css={css`margin-left: 0;`}>
                         <Icon css={css`background-image: url(${icn1})`}/>
                         <TextTitle>23 000</TextTitle>
                         <Text>Клиентов</Text>
@@ -121,7 +118,7 @@ export default class Network extends React.Component {
                         <TextTitle>500 + </TextTitle>
                         <Text>Партнеров</Text>
                     </Item>
-                    <Item>
+                    <Item css={css`margin-right: 0;`}>
                         <Icon css={css`background-image: url(${icn4})`}/>
                         <TextTitle>94 рубля </TextTitle>
                         <Text>Средний чек</Text>
