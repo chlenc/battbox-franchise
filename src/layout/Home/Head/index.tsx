@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from "@emotion/styled";
-import {colors, fonts, mainPadding} from "../../../vars";
+import {colors, fonts, mainPadding} from "@src/vars";
 import LogoBattBox from "./LogoBattBox";
 
 const Root = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
+  //position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -23,6 +23,7 @@ const Root = styled.div`
   }
   @media(max-width: 375px){
     padding-top: 27px;
+    padding-bottom: 20px;
   }
   
 `;

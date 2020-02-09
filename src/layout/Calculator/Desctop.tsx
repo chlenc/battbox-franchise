@@ -6,9 +6,17 @@ import {css, jsx} from "@emotion/core";
 import GetContactField from "@src/Components/GetContactsField";
 import Slider from 'rc-slider';
 import Tooltip from "rc-tooltip";
-import {max, min} from "@src/layout/Calculator/index";
+import {cityMap, max, min} from "@src/layout/Calculator/index";
 import Select from "@src/Components/Select";
 import {Option} from 'rc-select';
+import {
+    calculateInvestments,
+    calculateMonthlyRevenue,
+    ceil,
+    paybackPeriod,
+    profitInYear
+} from "@src/layout/Calculator/logic";
+
 const Handle = Slider.Handle;
 
 const Root = styled.div`
@@ -126,7 +134,7 @@ flex-direction: column;
 flex: 1;
 `
 
-const ItemTitle= styled.div`
+const ItemTitle = styled.div`
 ${gotham};
 font-size: 2vw;
 line-height: 2.6vw;
@@ -134,7 +142,7 @@ color: #15E9E9;
 
 `
 
-const ItemText= styled.div`
+const ItemText = styled.div`
 ${gotham};
 font-size: 1vw;
 line-height: 1.2vw;
@@ -144,8 +152,7 @@ color: #C2C2C2;
 `
 
 
-
-export default class Desktop extends React.Component{
+export default class Desktop extends React.Component {
     state = {
         stantions: 250
     }
@@ -168,11 +175,10 @@ export default class Desktop extends React.Component{
                     <CalculatorBlock>
                         <Row css={css`align-items: center; margin-bottom: 2vw`}>
                             <CalculatorBlockTitle>Ваш город</CalculatorBlockTitle>
-                            <Select css={css`width: 15vw;`}>
-                                <Option value="Санкт-Петербург">Санкт-Петербург</Option>
-                                <Option value="Самара">Самара</Option>
-                                <Option value="Сахалин">Сахалин</Option>
-                                <Option value="Саратов">Саратов</Option>
+                            <Select css={css`width: 15vw;`} onChange={this.onChangeStantions}>
+                                {Object.values(cityMap).map(({city, count}, k) =>
+                                    <Option key={k} value={count}>{city}</Option>)
+                                }
                             </Select>
                         </Row>
                         <Row css={css`align-items: center; margin-bottom: 3vw`}>
@@ -193,21 +199,21 @@ export default class Desktop extends React.Component{
                     <CalculatorBlock css={css`justify-content: space-between`}>
                         <Row css={css`align-items: flex-start`}>
                             <Item>
-                                <ItemTitle>2 000 000 ₽</ItemTitle>
+                                <ItemTitle>{ceil(calculateInvestments(stantions)) + ' ₽'}</ItemTitle>
                                 <ItemText>Требуемые инвестиции</ItemText>
                             </Item>
                             <Item>
-                                <ItemTitle>1 000 000 ₽</ItemTitle>
+                                <ItemTitle>{ceil(profitInYear(stantions)) + ' ₽'}</ItemTitle>
                                 <ItemText>Прибыль через год </ItemText>
                             </Item>
                         </Row>
                         <Row css={css`align-items: center`}>
                             <Item>
-                                <ItemTitle>100 000 ₽</ItemTitle>
+                                <ItemTitle>{ceil(calculateMonthlyRevenue(stantions)) + ' ₽'}</ItemTitle>
                                 <ItemText>Выручка в месяц</ItemText>
                             </Item>
                             <Item>
-                                <ItemTitle>6 мес</ItemTitle>
+                                <ItemTitle>{ceil(paybackPeriod(stantions)) + ' мес'}</ItemTitle>
                                 <ItemText>Срок окупаемости</ItemText>
                             </Item>
                         </Row>
@@ -239,7 +245,8 @@ const handle = (props: any) => {
     );
 };
 
-const Logo = () => <svg css={css`width: 7vw; @media(max-width: 768px){display: none}`} width="100" height="41" viewBox="0 0 100 41" fill="none" xmlns="http://www.w3.org/2000/svg"
+const Logo = () => <svg css={css`width: 7vw; @media(max-width: 768px){display: none}`} width="100" height="41"
+                        viewBox="0 0 100 41" fill="none" xmlns="http://www.w3.org/2000/svg"
                         xmlnsXlink="http://www.w3.org/1999/xlink">
     <rect width="100" height="40.4255" fill="url(#pattern0)"/>
     <defs>

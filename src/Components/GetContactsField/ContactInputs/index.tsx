@@ -113,11 +113,11 @@ const DoneText: React.FC<{ isDark?: boolean, isFull?:boolean }> = ({isDark, chil
 export default class ContactInputs extends React.Component<IProps, IState> {
 
     state = {
-        // mail: '',
-        // name: '',
-        // phone: '',
-        // city: '',
-        'name': 'Алексей', 'city': 'Москва', 'phone': '89151272664', 'mail': 'alexnagorny.an@gmail.com',
+        mail: '',
+        name: '',
+        phone: '',
+        city: '',
+        // 'name': 'Алексей', 'city': 'Москва', 'phone': '89151272664', 'mail': 'alexnagorny.an@gmail.com',
         ismail: undefined,
         isname: undefined,
         isphone: undefined,

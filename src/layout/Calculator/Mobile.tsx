@@ -9,7 +9,7 @@ import Tooltip from "rc-tooltip";
 import {FormInput} from "@src/layout/Calculator/Desctop";
 import Select from '@src/Components/Select';
 import {Option} from 'rc-select';
-import {max, min} from "@src/layout/Calculator/index";
+import {cityMap, max, min} from "@src/layout/Calculator/index";
 
 const Handle = Slider.Handle;
 
@@ -124,11 +124,10 @@ export default class Mobile extends React.Component {
                 <CalculatorBlock>
                     <Row>
                         <CalculatorBlockTitle>Ваш город</CalculatorBlockTitle>
-                        <Select css={css`width: 100%`}>
-                            <Option value="Санкт-Петербург">Санкт-Петербург</Option>
-                            <Option value="Самара">Самара</Option>
-                            <Option value="Сахалин">Сахалин</Option>
-                            <Option value="Саратов">Саратов</Option>
+                        <Select css={css`width: 100%`} onChange={this.onChangeStantions}>
+                            {Object.values(cityMap).map(({city, count}, k) =>
+                                <Option key={k} value={count}>{city}</Option>)
+                            }
                         </Select>
                     </Row>
                     <Row>

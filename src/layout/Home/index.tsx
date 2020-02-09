@@ -12,6 +12,7 @@ background-color: ${colors.bgDark};
 height: 90vh;
 display: flex;
 position:relative; 
+flex-direction: column;
 `
 const Body = styled.div`
 display: flex;
@@ -61,20 +62,27 @@ ${mainPadding};
 
 `
 
+const BodyWrapper = styled.div`
+display: flex;
+overflow: hidden;
+`
+
 export default class Home extends React.Component {
 
     render() {
         return <>
             <Root>
                 <Head/>
-                <Body>
-                    <Text>
-                        <Title>Франшиза <b>Batt</b>Box</Title>
-                        <SubTitle>Инвестируй в будущее и <b>зарабатывай<br/> от 100 000</b> руб. в месяц!</SubTitle>
-                    </Text>
-                    <Battery/>
+                <BodyWrapper>
+                    <Body>
+                        <Text>
+                            <Title>Франшиза <b>Batt</b>Box</Title>
+                            <SubTitle>Инвестируй в будущее и <b>зарабатывай<br/> от 100 000</b> руб. в месяц!</SubTitle>
+                        </Text>
+                        <Battery/>
 
-                </Body>
+                    </Body>
+                </BodyWrapper>
 
                 {/*<Bubbles/>*/}
                 <Waves/>
