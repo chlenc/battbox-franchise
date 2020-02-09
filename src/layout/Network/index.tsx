@@ -8,6 +8,7 @@ import icn1 from './img1.svg'
 import icn2 from './img2.svg'
 import icn3 from './img3.svg'
 import icn4 from './img4.svg'
+import {scrollStyle} from "@src/layout/WeGive";
 
 
 const Root = styled.div`
@@ -51,6 +52,18 @@ const Icon = styled.div`
         height: 165px;
         margin-bottom: 25px;
     }
+    @media(max-width: 960px){
+        width: 140px;
+        height: 140px;
+    }
+    @media(max-width: 820px){
+        width: 130px;
+        height: 130px;
+    }
+      @media(max-width: 768px){
+        width: 165px;
+        height: 165px;
+    }
 `
 const Container = styled.div`
 display: flex;
@@ -59,12 +72,12 @@ justify-content: space-between;
 padding-top: 85px;
 padding-bottom: 171px;
 
-& > * {margin: 0 60px;}
+& > * {margin: 0 10px;}
 
 @media(max-width: 1280px){
 padding-top: 75px;
 padding-bottom: 165px;
-& > * {margin: 0 32px;}
+& > * {margin: 0 5px;}
 }
 
 @media(max-width: 768px){
@@ -101,11 +114,11 @@ export default class Network extends React.Component {
 
         return <Root>
             <Title>Крупнейшая сеть пауршеринга в России</Title>
-            <ScrollBar>
+            <ScrollBar css={scrollStyle}>
                 <Container>
                     <Item css={css`margin-left: 0;`}>
                         <Icon css={css`background-image: url(${icn1})`}/>
-                        <TextTitle>23 000</TextTitle>
+                        <TextTitle>36 000</TextTitle>
                         <Text>Клиентов</Text>
                     </Item>
                     <Item>

@@ -21,6 +21,7 @@ const Root = styled.div`
   }
   @media(max-width: 768px){
     padding-top: 34px;
+    padding-bottom: 95px;
   }
   @media(max-width: 375px){
     padding-top: 27px;

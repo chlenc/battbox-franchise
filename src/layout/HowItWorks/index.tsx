@@ -69,6 +69,7 @@ flex-shrink: 0;
 margin-top: -8px;
 @media(max-width: 768px){
   margin-top: -26px;
+  margin-left: -10px;
   width: 40px;
 }
 `

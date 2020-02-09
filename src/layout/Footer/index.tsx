@@ -65,7 +65,8 @@ export default class Footer extends React.Component {
                         <b>Гончаров Дмитрий</b>
                     </Title><br/><br/><br/><br/>
                     <a css={textStyle} href="mailto:biz@batt-box.ru<">biz@batt-box.ru</a>
-                    <div css={textStyle}> +7 (495) 150 46 40</div>
+                    <br/>
+                    <a css={textStyle} href="tel:+74951504640">+7 (495) 150 46 40</a>
                 </div>
                 <br/><br/><br/><br/>
                 <Description>

@@ -212,17 +212,17 @@ export default class Desktop extends React.Component {
                     <CalculatorBlock css={css`justify-content: space-between`}>
                         <Row css={css`align-items: flex-start`}>
                             <Item>
-                                <ItemTitle>{ceil(calculateInvestments(stantions)) + ' Руб.'}</ItemTitle>
+                                <ItemTitle>{ceil(calculateInvestments(stantions)) + ' Р.'}</ItemTitle>
                                 <ItemText>Требуемые инвестиции</ItemText>
                             </Item>
                             <Item>
-                                <ItemTitle>{ceil(profitInYear(stantions)) + ' Руб.'}</ItemTitle>
+                                <ItemTitle>{ceil(profitInYear(stantions)) + ' Р.'}</ItemTitle>
                                 <ItemText>Прибыль через год </ItemText>
                             </Item>
                         </Row>
                         <Row css={css`align-items: center`}>
                             <Item>
-                                <ItemTitle>{ceil(calculateMonthlyRevenue(stantions)) + ' Руб.'}</ItemTitle>
+                                <ItemTitle>{ceil(calculateMonthlyRevenue(stantions)) + ' Р.'}</ItemTitle>
                                 <ItemText>Выручка в месяц</ItemText>
                             </Item>
                             <Item>

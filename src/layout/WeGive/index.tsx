@@ -65,12 +65,12 @@ justify-content: space-between;
 padding-top: 85px;
 padding-bottom: 171px;
 
-& > * {margin: 0 60px;}
+& > * {margin: 0 10px;}
 
 @media(max-width: 1280px){
 padding-top: 75px;
 padding-bottom: 124px;
-& > * {margin: 0 32px;}
+& > * {margin: 0 5px;}
 }
 
 @media(max-width: 768px){
@@ -119,7 +119,17 @@ background-image: url(${bigArrow});
 }
 `
 
+export const scrollStyle = css`
 
+@media(max-width: 768px){
+    margin: 0 -60px;
+    padding: 0 60px;
+}
+@media(max-width: 375px){
+    margin: 0 -24px;
+    padding: 0 24px;
+}
+`
 
 export default class WeGive extends React.Component {
 
@@ -127,7 +137,7 @@ export default class WeGive extends React.Component {
 
         return <Root>
             <Title>Мы даем:</Title>
-            <ScrollBar>
+            <ScrollBar css={scrollStyle}>
                 <Container>
                     <Item css={css`margin-left: 0;`}>
                         <Icon css={css`background-image: url(${icn1})`}/>
@@ -143,7 +153,7 @@ export default class WeGive extends React.Component {
                     </Item>
                     <Item>
                         <Icon css={css`background-image: url(${icn4})`}/>
-                        <Text>Административную платформу</Text>
+                        <Text>Личный кабинет</Text>
                     </Item>
                     <Item>
                         <Icon css={css`background-image: url(${icn5})`}/>

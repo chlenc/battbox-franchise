@@ -10,6 +10,7 @@ ${mainPadding};
 background: ${colors.gray};
 display: flex;
 flex-direction: column;
+margin-bottom: 64px;
 `
 
 

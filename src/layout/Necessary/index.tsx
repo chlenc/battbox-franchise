@@ -76,8 +76,8 @@ export default class Necessary extends React.Component {
             <Title>Что необходимо для старта?</Title>
             <Row css={css`@media(max-width: 768px){flex-direction: row-reverse}`}>
                 <Item>
-                    <Subtitle>Юр.лицо<br/><br/></Subtitle>
-                    <Text>Мы работаем только с юр. Лицами и можем помочь в оформлении</Text>
+                    <Subtitle>Юр. лицо<br/><br/></Subtitle>
+                    <Text>Мы работаем только с юр. лицами и можем помочь в оформлении</Text>
                 </Item>
                 <Item>
                     <Subtitle>SIM карты<br/><br/></Subtitle>

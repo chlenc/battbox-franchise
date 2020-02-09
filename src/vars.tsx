@@ -204,6 +204,9 @@ export const fonts = {
     white-space: unset;
     padding-bottom: 24px;
   }
+  @media (max-width: 480px) {
+    font-size: 30px;
+  }
   b{
     font-family: GothamPro-Bold;
   }
@@ -223,6 +226,9 @@ export const fonts = {
   @media (max-width: 865px) {
     font-size: 22px;
     line-height: 27px;
+  }
+    b{
+    font-family: GothamPro-Bold;
   }
 `,
 

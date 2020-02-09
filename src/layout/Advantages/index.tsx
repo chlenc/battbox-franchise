@@ -22,15 +22,12 @@ align-items: center;
 `;
 
 const Title = styled.div`
-${fonts.gotham_white_45_medium};
 margin-bottom: 11.5vw;
-@media (max-width: 1280px) {
-${fonts.gotham_white_32_medium};
-margin-bottom: 7.5vw;
-}
+width: 100%;
+${fonts.block_title};
 @media (max-width: 768px) {
-${fonts.gotham_white_22_medium};
-
+  margin-bottom: 50px;
+}
 }
 `;
 
