@@ -85,16 +85,16 @@ display: none;
 @media (max-width: 768px) {display: block;}
 
 & > :last-child{
-margin-top: 300px;
-@media (max-width: 450px) {   margin-top: 70vw;}
+margin-top: 400px;
+@media (max-width: 450px) {   margin-top: 58vw;}
 }
 `
 
 const imgStyle = css`
 width: 100%;
 position: absolute;
-top: -360px;
-@media (max-width: 450px) {   top: -75vw;}
+top: -440px;
+@media (max-width: 450px) {   top: -68vw;}
 
 `;
 const Mbr = styled.br`display: none;@media (max-width: 768px) and (min-width: 480px) {display: block;}`
@@ -141,13 +141,13 @@ const Advantages: React.FunctionComponent = () => <Root>
 
 const Station = () => <Item>
     <Round/>
-    <b>Вандалостойкая станция <br/></b>
+    <b>Вандалостойкая станция <br/><br/></b>
     Все power bank заблокированы <Mbr/>
     с помощью электронного замка
 </Item>
 const Applications = () => <Item>
     <Round/>
-    <b>Приложение для iOS и Android<br/></b>
+    <b>Приложение для iOS и Android<br/><br/></b>
     Быстрая регистрация,
     карта с зарядками, <Mbr/>
     автоматическое списание
@@ -155,7 +155,7 @@ const Applications = () => <Item>
 </Item>
 const Network = () => <Item>
     <Round/>
-    <b>Помощь на старте<br/></b>
+    <b>Помощь на старте<br/><br/></b>
     Мы передаем партнеру весь наш опыт, <Mbr/>
     обучаем продажам, делимся контактами сетей, <Mbr/>
     помогаем с подбором локаций
@@ -163,7 +163,7 @@ const Network = () => <Item>
 </Item>
 const Profit = () => <Item>
     <Round/>
-    <b>Дополнительная прибыль<br/></b>
+    <b>Дополнительная прибыль<br/><br/></b>
     Каждый power bank -
     это рекламная <Mbr/>площадка,
     ей вы распоряжаетесь <Mbr/>
@@ -172,14 +172,14 @@ const Profit = () => <Item>
 </Item>
 const Smart = () => <Item>
     <Round/>
-    <b>Умная зарядка<br/></b>
+    <b>Умная зарядка<br/><br/></b>
     Наши power bank имеют MFI <Mbr/>
     сертификацию и кнопку плавного <Mbr/>
     пуска для безопасности смартфона
 </Item>
 const Experience = () => <Item>
     <Round/>
-    <b>Нет операционных расходовт<br/></b>
+    <b>Нет операционных расходовт<br/><br/></b>
     Вам не нужны сотрудники и офис, <Mbr/>чтобы запустить бизнес. <Mbr/>
     Работа сервиса автоматизирована и<br/>
     управляется через онлайн платформу

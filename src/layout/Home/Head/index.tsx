@@ -13,6 +13,7 @@ const Root = styled.div`
   right: 0;
   ${mainPadding};
   padding-top: 57px;
+  padding-bottom: 20px;
   //background: ${colors.gray};
   //z-index: 10;
   @media(max-width: 1280px){
@@ -23,7 +24,6 @@ const Root = styled.div`
   }
   @media(max-width: 375px){
     padding-top: 27px;
-    padding-bottom: 20px;
   }
   
 `;

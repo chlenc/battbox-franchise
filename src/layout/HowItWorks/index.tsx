@@ -8,11 +8,11 @@ const Root = styled.div`
 background-color: ${colors.gray};
 display: flex;
 flex-direction: column;
-padding-bottom: 268px;
+padding-bottom: 150px;
 
-@media(max-width: 1280px){
-padding-bottom: 218px;
-}
+//@media(max-width: 1280px){
+//padding-bottom: 218px;
+//}
 @media(max-width: 768px){
 padding-bottom: 68px;
 }
@@ -29,8 +29,6 @@ padding-bottom: 60px;
 }
 @media(max-width: 768px){
   padding-top: 56px;
-  padding-left: 60px;
-  padding-right:60px;
 }
 `
 
@@ -58,7 +56,7 @@ const Item = styled.div`
 display: flex;
 margin-bottom: 65px;
 @media(max-width: 768px){
-  padding: 0 24px 0 60px;
+  ${mainPadding};
 }
 //margin: 0 -20px ;
 //& > * {

@@ -103,11 +103,11 @@ const DoneTextRoot = styled.div`
     }
 `
 
-const DoneText: React.FC<{ isDark?: boolean, isFull?:boolean }> = ({isDark, children, isFull}) =>
-        <DoneTextRoot css={css`color: ${isDark ? colors.white : colors.black};`}>
-            <img css={css`@media(min-width: 768px){display: none}`} src={isFull? full : low} alt="low"/>
-            {children}
-        </DoneTextRoot>
+const DoneText: React.FC<{ isDark?: boolean, isFull?: boolean }> = ({isDark, children, isFull}) =>
+    <DoneTextRoot css={css`color: ${isDark ? colors.white : colors.black};`}>
+        <img css={css`@media(min-width: 768px){display: none}`} src={isFull ? full : low} alt="low"/>
+        {children}
+    </DoneTextRoot>
 
 
 export default class ContactInputs extends React.Component<IProps, IState> {
@@ -140,7 +140,7 @@ export default class ContactInputs extends React.Component<IProps, IState> {
     handleChangePhone = ({target: {value: phone}}: React.ChangeEvent<HTMLInputElement>) => {
         const isphone = validate(phone, 'phone');
         let state: any = {isphone};
-        if (!isNaN(+phone)) state.phone = phone;
+        if (phone === '+' || (!isNaN(+phone))) state.phone = phone;
         this.setState(state);
 
     };
@@ -236,7 +236,7 @@ function validate(value: string, type?: 'mail' | 'phone') {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value))
             isValid = true;
     } else if (type === 'phone') {
-        if (!isNaN(+value) && (value.length === 11))
+        if (!isNaN(+value) && (value.length === 10 || value.length === 11 || value.length === 12))
             isValid = true;
     } else if (value !== '') {
         isValid = true;

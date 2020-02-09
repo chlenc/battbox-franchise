@@ -124,7 +124,6 @@ line-height: 82px;
 `
 
 
-
 const Item: React.FC<{ city?: string, count?: string, price?: string }> =
     ({city, count, price}) =>
         <ItemRoot>
@@ -138,20 +137,21 @@ const Item: React.FC<{ city?: string, count?: string, price?: string }> =
 export default class Necessary extends React.Component {
     render() {
         return <Root>
-            <Title>Что необходимо для старта?</Title>
-            <Subtitle>Указано количество станций для получения эксклюзива и оптимального соотношения
-                расходы/доходы</Subtitle>
-            <Row >
-                <Item city="Санкт-Петербург" count="200" price="10 000 000 ₽"/>
-                <Item city="Краснодарский край" count="100" price="5 000 000 ₽"/>
-                <Item city="Казань" count="80" price="4 000 000 ₽"/>
+            <Title>Топ-6 свободных городов для открытия франшизы</Title>
+            <Subtitle>Указано количество станций и стоимость, необходимые для получения эксклюзива и оптимального
+                соотношения расход/доход</Subtitle>
+            <Row>
+                <Item city="Санкт-Петербург" count="200" price="10 000 000 Руб."/>
+                <Item city="Краснодарский край" count="100" price="5 000 000 Руб."/>
+                <Item city="Казань" count="80" price="4 000 000 Руб."/>
             </Row>
             <Row>
-                <Item city="Екатеринбург" count="100" price="5 000 000 ₽"/>
-                <Item city="Новосибирск" count="70" price="3 500 000 ₽"/>
-                <Item city="Нижний Новгород" count="60" price="3 000 000 ₽"/>
+                <Item city="Екатеринбург" count="100" price="5 000 000 Руб."/>
+                <Item city="Новосибирск" count="70" price="3 500 000 Руб."/>
+                <Item city="Нижний Новгород" count="60" price="3 000 000 Руб."/>
             </Row>
-            <Title css={css`padding-top: 92px; @media(max-width: 1060px){padding-top: 46px;}`}>Ваши контакты для связи</Title>
+            <Title css={css`padding-top: 92px; @media(max-width: 1060px){padding-top: 46px;}`}>Ваши контакты для
+                связи</Title>
             <GetContactField btnText="Добавить"/>
 
         </Root>;

@@ -12,6 +12,7 @@ import Necessary from "@src/layout/Necessary";
 import TopSix from "@src/layout/TopSix";
 import Footer from "@src/layout/Footer";
 import Placeholder from "@src/layout/Placeholder";
+require('dotenv').config()
 
 export default class App extends React.Component {
 
@@ -22,7 +23,7 @@ export default class App extends React.Component {
     componentDidMount(): void {
         setTimeout(() => {
             this.setState({loading: false})
-        }, 0)//2000)
+        }, +process.env.LOADER_TIME! || 2000)//2000)
     }
 
     render() {

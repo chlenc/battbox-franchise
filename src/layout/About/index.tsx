@@ -1,12 +1,14 @@
 /** @jsx jsx */
 import React from "react";
 import styled from "@emotion/styled";
-import { colors, fonts } from "@src/vars";
+import {colors, fonts, mainPadding} from "@src/vars";
 import Picture from "@src/layout/About/Picture";
 import { css, jsx } from "@emotion/core";
 
 const Root = styled.div`
-padding: 5vw 12vw 0 12vw;
+//padding: 5vw 12vw 0 12vw;
+padding-top: 5vw;
+${mainPadding};
 background: ${colors.gray};
 display: flex;
 justify-content: space-between;

@@ -9,8 +9,16 @@ import Tooltip from "rc-tooltip";
 import {FormInput} from "@src/layout/Calculator/Desctop";
 import Select from '@src/Components/Select';
 import {Option} from 'rc-select';
-import {cityMap, max, min} from "@src/layout/Calculator/index";
+import {max, min} from "@src/layout/Calculator/index";
+import {
+    calculateInvestments,
+    calculateMonthlyRevenue,
+    ceil,
+    paybackPeriod,
+    profitInYear
+} from "@src/layout/Calculator/logic";
 
+const cityMap = require('./cityMap.json')
 const Handle = Slider.Handle;
 
 const Root = styled.div`
@@ -75,6 +83,10 @@ font-size: 12px;
 line-height: 15px;
 color: #7C7C7C;
 padding-bottom: 16px;
+
+b{
+${gotham_bold}
+}
 `
 
 const Item = styled.div`
@@ -111,28 +123,37 @@ export default class Mobile extends React.Component {
 
     onChangeStantions = (stantions: string | number) => {
         if (typeof stantions === 'number') this.setState({stantions})
-        else if (!isNaN(+stantions) && +stantions >= min && +stantions <= max) this.setState({stantions: +stantions})
+        else if (!isNaN(+stantions)) {
+            if (+stantions <= 0) this.setState({stantions: 0})
+            if (+stantions >= max) this.setState({stantions: max})
+            else this.setState({stantions: +stantions})
+        }
     }
 
+    onChangeCity = (selectedCity: string) => {
+        const res = (cityMap as { city: string, count: number }[]).find(({city}) => city === selectedCity);
+        res && this.setState({stantions: res.count})
+    }
 
     render() {
         const {stantions} = this.state;
         return <Root>
             <Title>Кальулятор окупаемости</Title>
             <Body>
-                <CalculatorTitle>Тариф Black</CalculatorTitle>
+                <CalculatorTitle>Рассчет тарифа Black</CalculatorTitle>
                 <CalculatorBlock>
                     <Row>
                         <CalculatorBlockTitle>Ваш город</CalculatorBlockTitle>
-                        <Select css={css`width: 100%`} onChange={this.onChangeStantions}>
+                        <Select css={css`width: 100%;`} onChange={this.onChangeCity}>
                             {Object.values(cityMap).map(({city, count}, k) =>
-                                <Option key={k} value={count}>{city}</Option>)
+                                <Option key={k} value={city}>{city}</Option>)
                             }
                         </Select>
                     </Row>
                     <Row>
                         <CalculatorBlockTitle>Количество станций</CalculatorBlockTitle>
-                        <FormInput css={[inputStyle, css`width: calc(100% - 36px);padding-left: 36px;`]} value={stantions}
+                        <FormInput css={[inputStyle, css`width: calc(100% - 36px);padding-left: 36px;`]}
+                                   value={stantions === 0 ? '' : stantions}
                                    onChange={(e) => this.onChangeStantions(e.target.value)}
                                    type="number"/>
                     </Row>
@@ -143,24 +164,24 @@ export default class Mobile extends React.Component {
                             marks={{10: 10, 300: 300}}
                             step={1}
                             handle={handle}/>
-                    <Description>Данное количество станций необходимо для создания комфортного уровня сервиса, также
-                        для оптимального соотношения показателей доход/расход.</Description>
+                    <Description>Данное количество станций <b>рекомендованно</b> для создания комфортного уровня
+                        сервиса, а также оптимального соотношения показателей доход/расход. </Description>
                 </CalculatorBlock>
                 <CalculatorBlock>
                     <Item>
-                        <ItemTitle>2 000 000 ₽</ItemTitle>
+                        <ItemTitle>{ceil(calculateInvestments(stantions)) + ' Руб.'}</ItemTitle>
                         <ItemText>Требуемые инвестиции</ItemText>
                     </Item>
                     <Item>
-                        <ItemTitle>1 000 000 ₽</ItemTitle>
+                        <ItemTitle>{ceil(profitInYear(stantions)) + ' Руб.'}</ItemTitle>
                         <ItemText>Прибыль через год </ItemText>
                     </Item>
                     <Item>
-                        <ItemTitle>100 000 ₽</ItemTitle>
+                        <ItemTitle>{ceil(calculateMonthlyRevenue(stantions)) + ' Руб.'}</ItemTitle>
                         <ItemText>Выручка в месяц</ItemText>
                     </Item>
                     <Item>
-                        <ItemTitle>6 мес</ItemTitle>
+                        <ItemTitle>{ceil(paybackPeriod(stantions)) + ' мес'}</ItemTitle>
                         <ItemText>Срок окупаемости</ItemText>
                     </Item>
 
@@ -168,7 +189,7 @@ export default class Mobile extends React.Component {
                 <CalculatorTitle css={css`padding: 16px 0 ; color: white`}>Подробный рассчет</CalculatorTitle>
                 <Text css={css`padding-bottom: 36px`}>Данный калькулятор основан на теоретической модели в г.
                     Москве.<br/>
-                    Более подробный калькулятор вы можете запросить у менеджера</Text>
+                    Более подробный калькулятор вы можете запросить у менеджера.</Text>
                 <GetContactField title="Запросить" hideTitle darkTheme/>
             </Body>
         </Root>

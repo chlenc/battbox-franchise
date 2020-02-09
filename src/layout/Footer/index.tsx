@@ -64,12 +64,12 @@ export default class Footer extends React.Component {
                         Директор по развитию регионов<br/>
                         <b>Гончаров Дмитрий</b>
                     </Title><br/><br/><br/><br/>
-                    <a css={textStyle} href="mailto:friend@batt-box.ru<">friend@batt-box.ru</a>
+                    <a css={textStyle} href="mailto:biz@batt-box.ru<">biz@batt-box.ru</a>
                     <div css={textStyle}> +7 (495) 150 46 40</div>
                 </div>
                 <br/><br/><br/><br/>
                 <Description>
-                    Информация на сайте не является публичной афертой. ООО<br/>
+                    Информация на сайте не является публичной офертой. ООО<br/>
                     БЭТТБОКС не гарантрует финансовые показатели в других регионых.
                 </Description>
             </Column>

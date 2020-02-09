@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import React from "react";
 import styled from "@emotion/styled";
-import {colors, fonts, gotham, mainPadding} from "@src/vars";
+import {colors, fonts, gotham, gotham_bold, mainPadding} from "@src/vars";
 import {css, jsx} from "@emotion/core";
 import GetContactField from "@src/Components/GetContactsField";
 import Slider from 'rc-slider';
 import Tooltip from "rc-tooltip";
-import {cityMap, max, min} from "@src/layout/Calculator/index";
+import { max, min} from "@src/layout/Calculator/index";
 import Select from "@src/Components/Select";
 import {Option} from 'rc-select';
 import {
@@ -16,7 +16,7 @@ import {
     paybackPeriod,
     profitInYear
 } from "@src/layout/Calculator/logic";
-
+const cityMap = require('./cityMap.json')
 const Handle = Slider.Handle;
 
 const Root = styled.div`
@@ -122,10 +122,13 @@ width: 9vw;
 const Description = styled.div`
 ${gotham};
 font-weight: 300;
-font-size: 0.6vw;
-line-height: 0.7vw;
+font-size: 1vw;
+line-height: 1.3vw;
 color: #7C7C7C;
 padding-top: 0.5vw;
+b{
+${gotham_bold}
+}
 `
 
 const Item = styled.div`
@@ -159,7 +162,16 @@ export default class Desktop extends React.Component {
 
     onChangeStantions = (stantions: string | number) => {
         if (typeof stantions === 'number') this.setState({stantions})
-        else if (!isNaN(+stantions) && +stantions >= min && +stantions <= max) this.setState({stantions: +stantions})
+        else if (!isNaN(+stantions)) {
+            if (+stantions <= 0) this.setState({stantions: 0})
+            if (+stantions >= max) this.setState({stantions: max})
+            else this.setState({stantions: +stantions})
+        }
+    }
+
+    onChangeCity = (selectedCity: string) => {
+        const res = (cityMap as {city: string, count: number}[]).find(({city}) => city === selectedCity);
+        res && this.setState({stantions: res.count})
     }
 
     render() {
@@ -167,23 +179,24 @@ export default class Desktop extends React.Component {
         return <Root>
             <Title>Кальулятор окупаемости</Title>
             <Body>
-                <Row css={css`align-items: center;`}>
-                    <CalculatorTitle>Тариф Black</CalculatorTitle>
+                <Row css={css`align-items: center; padding-bottom: 1vw;`}>
+                    <CalculatorTitle css={css`padding-bottom: 0 !important;`}>Рассчет тарифа Black</CalculatorTitle>
                     <Logo/>
                 </Row>
                 <Row>
                     <CalculatorBlock>
                         <Row css={css`align-items: center; margin-bottom: 2vw`}>
                             <CalculatorBlockTitle>Ваш город</CalculatorBlockTitle>
-                            <Select css={css`width: 15vw;`} onChange={this.onChangeStantions}>
+                            <Select css={css`width: 15vw;`} onChange={this.onChangeCity}>
                                 {Object.values(cityMap).map(({city, count}, k) =>
-                                    <Option key={k} value={count}>{city}</Option>)
+                                    <Option key={k} value={city}>{city}</Option>)
                                 }
                             </Select>
                         </Row>
                         <Row css={css`align-items: center; margin-bottom: 3vw`}>
                             <CalculatorBlockTitle>Количество станций</CalculatorBlockTitle>
-                            <FormInput value={stantions} onChange={(e) => this.onChangeStantions(e.target.value)}
+                            <FormInput value={stantions === 0 ? '' : stantions}
+                                       onChange={(e) => this.onChangeStantions(e.target.value)}
                                        type="number"/>
                         </Row>
                         <Slider value={stantions}
@@ -193,23 +206,23 @@ export default class Desktop extends React.Component {
                                 marks={{10: 10, 300: 300}}
                                 step={1}
                                 handle={handle}/>
-                        <Description>Данное количество станций необходимо для создания комфортного уровня сервиса, также
-                            для оптимального соотношения показателей доход/расход.</Description>
+                        <Description>Данное количество станций <b>рекомендованно</b> для создания комфортного уровня
+                            сервиса, а также оптимального соотношения показателей доход/расход. </Description>
                     </CalculatorBlock>
                     <CalculatorBlock css={css`justify-content: space-between`}>
                         <Row css={css`align-items: flex-start`}>
                             <Item>
-                                <ItemTitle>{ceil(calculateInvestments(stantions)) + ' ₽'}</ItemTitle>
+                                <ItemTitle>{ceil(calculateInvestments(stantions)) + ' Руб.'}</ItemTitle>
                                 <ItemText>Требуемые инвестиции</ItemText>
                             </Item>
                             <Item>
-                                <ItemTitle>{ceil(profitInYear(stantions)) + ' ₽'}</ItemTitle>
+                                <ItemTitle>{ceil(profitInYear(stantions)) + ' Руб.'}</ItemTitle>
                                 <ItemText>Прибыль через год </ItemText>
                             </Item>
                         </Row>
                         <Row css={css`align-items: center`}>
                             <Item>
-                                <ItemTitle>{ceil(calculateMonthlyRevenue(stantions)) + ' ₽'}</ItemTitle>
+                                <ItemTitle>{ceil(calculateMonthlyRevenue(stantions)) + ' Руб.'}</ItemTitle>
                                 <ItemText>Выручка в месяц</ItemText>
                             </Item>
                             <Item>
@@ -223,7 +236,7 @@ export default class Desktop extends React.Component {
                 <CalculatorTitle css={css`padding-bottom: 1vw; color: white`}>Подробный рассчет</CalculatorTitle>
                 <Text css={css`padding-bottom: 1.5vw`}>Данный калькулятор основан на теоретической модели в г.
                     Москве.<br/>
-                    Более подробный калькулятор вы можете запросить у менеджера</Text>
+                    Более подробный калькулятор вы можете запросить у менеджера.</Text>
                 <GetContactField title="Запросить" hideTitle darkTheme/>
             </Body>
         </Root>
