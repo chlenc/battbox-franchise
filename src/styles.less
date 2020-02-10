@@ -61,36 +61,56 @@ input::-webkit-inner-spin-button {
     background-color: transparent !important;
   }
 
+  .rc-tooltip {
+    opacity: 1 !important;
+    .rc-tooltip-content {
+      .rc-tooltip-arrow {
+        border-bottom-color: transparent;
+        //display: none;
+      }
+
+      .rc-tooltip-inner {
+        background: white;
+      }
+
+    }
+  }
+  //
+  //.rc-tooltip-placement-bottomRight .rc-tooltip-arrow {
+  //  right: 3% !important;
+  //}
+
   .rc-slider {
 
 
     .rc-slider-mark {
       top: -1.5vw;
-      @media(max-width: 768px){
+      @media (max-width: 768px) {
         top: -30px;
       }
     }
 
-    .rc-slider-dot{
+    .rc-slider-dot {
       display: none;
     }
 
-    .rc-slider-handle{
+    .rc-slider-handle {
       border: none;
       width: 16px;
       height: 16px;
       margin-top: -7px;
       background: #15E9E9;
     }
-    .rc-slider-step{
+
+    .rc-slider-step {
       background: transparent;
     }
 
-    .rc-slider-track{
+    .rc-slider-track {
       background: #15E9E9;
     }
 
-    .rc-slider-rail{
+    .rc-slider-rail {
       height: 14px;
       background: #000;
       border-radius: 32px;
@@ -98,20 +118,21 @@ input::-webkit-inner-spin-button {
 
     }
 
-    .rc-slider-mark-text{
+    .rc-slider-mark-text {
       font-family: GothamPro-Light !important;
       font-weight: 300;
       font-size: 1.2vw !important;
       line-height: 1.4vw !important;
       text-align: center;
       color: #575A64;
-      @media(max-width: 768px){
+      @media (max-width: 768px) {
         font-size: 18px !important;
         line-height: 22px !important;
       }
     }
   }
-  .rc-slider-tooltip-content{
+
+  .rc-slider-tooltip-content {
 
     .rc-slider-tooltip-inner {
       box-shadow: none !important;
@@ -123,7 +144,7 @@ input::-webkit-inner-spin-button {
       color: #15E9E9 !important;
       font-size: 1.2vw !important;
       line-height: 1.4vw !important;
-      @media(max-width: 768px){
+      @media (max-width: 768px) {
         font-size: 20px !important;
         line-height: 24px !important;
       }
@@ -134,14 +155,14 @@ input::-webkit-inner-spin-button {
     }
   }
 
-  .rc-select-arrow{
+  .rc-select-arrow {
     display: flex !important;
     align-items: center !important;
     height: 100% !important;
     right: 5% !important;
   }
 
-  .rc-select-dropdown{
+  .rc-select-dropdown {
     background: rgb(47, 49, 54);
     border: none;
     box-shadow: none;
@@ -150,59 +171,69 @@ input::-webkit-inner-spin-button {
     font-family: GothamPro !important;
     font-size: 1vw;
     padding: 1vw 1.5vw;
-    @media(max-width: 768px){
+    @media (max-width: 768px) {
       padding: 20px 36px;
       font-size: 16px;
     };
     color: white;
-    ::before{
+
+    ::before {
       content: " ";
       position: absolute;
       z-index: -1;
       top: 0;
       left: 10%;
       right: 10%;
-      border-top: 1px solid rgb(38,40,43);
+      border-top: 1px solid rgb(38, 40, 43);
     }
   }
 
-  .rc-select-open{
-    border-radius: 25px 25px  0 0 !important;
-    .rc-select-arrow{
-        transform: rotate(180deg);
+  .rc-select-open {
+    border-radius: 25px 25px 0 0 !important;
+
+    .rc-select-arrow {
+      transform: rotate(180deg);
     }
   }
-  .rc-select-item-option{
-      margin-bottom: 15px;
+
+  .rc-select-item-option {
+    margin-bottom: 15px;
   }
-  .rc-select-item-option-selected{
+
+  .rc-select-item-option-selected {
     display: flex;
     justify-content: space-between;
   }
-  .rc-select-selection-item{
+
+  .rc-select-selection-item {
     display: flex;
     align-items: center;
     height: 100%;
     position: absolute;
     left: 1.5vw;
-    @media(max-width: 768px){
+    @media (max-width: 768px) {
       left: 36px;
     }
   }
-  .rc-select-selection-search-input{
+
+  .rc-select-selection-search-input {
     outline: none;
     background: transparent;
     border: none;
     font-family: GothamPro !important;
     color: white;
-    font-size: 1vw;@media(max-width: 768px){font-size: 16px;};
+    font-size: 1vw;
+    @media (max-width: 768px) {
+      font-size: 16px;
+    };
   }
-  .rc-select-selector{
+
+  .rc-select-selector {
     display: flex;
     align-items: center;
     width: 100%;
     padding-left: 1.5vw;
-    @media(max-width: 768px){
+    @media (max-width: 768px) {
       padding-left: 36px;
     }
     //padding-top: 2%;

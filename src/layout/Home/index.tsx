@@ -72,13 +72,9 @@ ${mainPadding};
 const BodyWrapper = styled.div`
 display: flex;
 overflow: hidden;
+height: 100%;
 `
 
-const Phone = styled.a`
-${fonts.block_small_title};
-outline: none;
-//text-decoration: none;
-`
 
 export default class Home extends React.Component {
 
@@ -91,8 +87,6 @@ export default class Home extends React.Component {
                         <Text>
                             <Title>Франшиза <b>Batt</b>Box</Title>
                             <SubTitle>Инвестируй в будущее и <b>зарабатывай<br/> от 100 000</b> руб. в месяц!</SubTitle>
-                            <Phone href="tel:+74951504640">+7 (495) 150 46 40</Phone>
-
                         </Text>
                         <Battery/>
 

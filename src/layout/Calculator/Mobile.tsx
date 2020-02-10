@@ -116,18 +116,20 @@ const Text = styled.div`
 ${fonts.block_text}
 `
 
+
 export default class Mobile extends React.Component {
     state = {
-        stantions: 250
+        stantions: 250,
+        isError: false
     }
 
     onChangeStantions = (stantions: string | number) => {
-        if (typeof stantions === 'number') this.setState({stantions})
-        else if (!isNaN(+stantions)) {
-            if (+stantions <= 0) this.setState({stantions: 0})
-            if (+stantions >= max) this.setState({stantions: max})
-            else this.setState({stantions: +stantions})
-        }
+        stantions = +stantions;
+        let isError = false;
+        if (isNaN(stantions) || stantions <= 0) stantions = 0;
+        if (stantions >= max) stantions = max;
+        if (stantions < 10) isError = true
+        this.setState({stantions, isError})
     }
 
     onChangeCity = (selectedCity: string) => {
@@ -136,7 +138,8 @@ export default class Mobile extends React.Component {
     }
 
     render() {
-        const {stantions} = this.state;
+        const {stantions, isError} = this.state;
+        console.log(isError)
         return <Root>
             <Title>Кальулятор окупаемости</Title>
             <Body>
@@ -152,7 +155,7 @@ export default class Mobile extends React.Component {
                     </Row>
                     <Row>
                         <CalculatorBlockTitle>Количество станций</CalculatorBlockTitle>
-                        <FormInput css={[inputStyle, css`width: calc(100% - 36px);padding-left: 36px;`]}
+                        <FormInput css={[inputStyle, css`width: calc(100% - 36px);padding-left: 36px;border-color: ${isError ? '#FF0000' : 'transparent'}`]}
                                    value={stantions === 0 ? '' : stantions}
                                    onChange={(e) => this.onChangeStantions(e.target.value)}
                                    type="number"/>
