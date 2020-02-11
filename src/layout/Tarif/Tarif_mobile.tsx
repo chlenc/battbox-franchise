@@ -5,9 +5,9 @@ import {colors, fonts, gotham, gotham_bold, mainPadding} from "@src/vars";
 import {css, jsx} from "@emotion/core";
 import ScrollBar from 'react-perfect-scrollbar'
 
-import black from './black.svg'
-import simple from './simple.svg'
-import gold from './gold.svg'
+import black from './black_m.svg'
+import simple from './simple_m.svg'
+import gold from './gold_m.svg'
 import Info from "@src/Components/Info";
 
 const Root = styled.div`
@@ -80,7 +80,7 @@ const TextItem = () => <Item>
     <Text>Консультация в нерабочее время</Text>
 </Item>
 
-const InfoTextRoot = styled.div`
+export const InfoTextRoot = styled.div`
 font-size: 15px;
 line-height: 18px;
 color: #000000;

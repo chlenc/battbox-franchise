@@ -11,10 +11,15 @@ const Root = styled.div`
 background: url("${desktop}") center no-repeat;
 background-size: cover;
 padding: 0  8vw 10vw 8vw;
-@media (max-width: 1280px) {padding: 3.13vw 13vw 10vw 13vw}
+//width: calc(100% - 16vw);
+@media (max-width: 1280px) {
+padding: 3.13vw 13vw 10vw 13vw;
+//width: calc(100% - 26vw);
+}
 @media (max-width: 768px) {
 background: ${colors.gray};
 padding: 9vw  7vw 8vw 7vw;
+//width: calc(100% - 14vw);
 display: flex;
 flex-direction: column;
 align-items: center;

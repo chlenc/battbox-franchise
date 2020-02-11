@@ -12,6 +12,7 @@ import Necessary from "@src/layout/Necessary";
 import TopSix from "@src/layout/TopSix";
 import Footer from "@src/layout/Footer";
 import Placeholder from "@src/layout/Placeholder";
+import styled from "@emotion/styled";
 require('dotenv').config()
 
 export default class App extends React.Component {

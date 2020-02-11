@@ -16,7 +16,9 @@ export const calculateMonthlyRevenue = (amount: number) => {
 };
 
 // 3) Прибыль через год = выручка в месяц * 12 - необходимые вложения
-export const profitInYear = (amount: number) => amount < 10 ? 0 : calculateMonthlyRevenue(amount) * 12;
+export const profitInYear = (amount: number) => amount < 10
+    ? 0
+    : ((calculateMonthlyRevenue(amount) * 12) - calculateInvestments(amount));
 
 // 4) Срок окупаемости = необходимые вложения / выручка в месяц (в месяцах)
 export const paybackPeriod = (amount: number) => {

@@ -119,7 +119,7 @@ ${fonts.block_text}
 
 export default class Mobile extends React.Component {
     state = {
-        stantions: 250,
+        stantions: 20,
         isError: false
     }
 
@@ -139,7 +139,6 @@ export default class Mobile extends React.Component {
 
     render() {
         const {stantions, isError} = this.state;
-        console.log(isError)
         return <Root>
             <Title>Кальулятор окупаемости</Title>
             <Body>

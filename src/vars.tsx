@@ -194,10 +194,13 @@ export const fonts = {
     home_title: css`
   ${gotham};
   color: ${colors.white};
-  font-size: 5.7vw;
-  line-height: 6.9vw;
+  font-size: 5.1vw;
+  line-height: 6vw;
   text-align: left;
   white-space: nowrap;
+  @media (max-width: 1280px) {
+  font-size: 4.6vw;
+  }
   @media (max-width: 768px) {
     font-size: 36px;
     line-height: 44px; 
@@ -205,6 +208,12 @@ export const fonts = {
     padding-bottom: 24px;
   }
   @media (max-width: 480px) {
+    font-size: 30px;
+  }
+  @media (max-width: 410px) {
+    font-size: 26px;
+  }
+  @media (max-width: 375px) {
     font-size: 30px;
   }
   b{
@@ -227,6 +236,16 @@ export const fonts = {
     font-size: 22px;
     line-height: 27px;
   }
+  @media (max-width: 480px) {
+     font-size: 22px;;
+  }
+  @media (max-width: 410px) {
+    font-size: 18px;
+  }
+  @media (max-width: 375px) {
+    font-size: 22px;
+  }
+  
     b{
     font-family: GothamPro-Bold;
   }
@@ -530,6 +549,23 @@ export const fonts = {
 }
 
 export const mainPadding = css`
+padding-left:  170px;
+padding-right:  170px;
+@media(max-width: 1280px){
+  padding-left: 110px;
+  padding-right: 110px;
+}
+@media(max-width: 768px){
+  padding-left: 60px;
+  padding-right:60px;
+}
+@media(max-width: 375px){
+  padding-left: 24px;
+  padding-right:24px;
+}
+`
+
+export const fullScreen = css`
 padding-left:  170px;
 padding-right:  170px;
 @media(max-width: 1280px){

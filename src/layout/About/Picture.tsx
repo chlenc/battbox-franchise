@@ -8,6 +8,7 @@ height: auto;
 flex: 1;
 display: flex;
 width: 50%;
+max-width: 1920px;
 @media (max-width: 768px){
     height: 370px; 
     width: 100%;

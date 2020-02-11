@@ -13,6 +13,7 @@ display: flex;
 position:relative; 
 flex-direction: column;
 height: 100vh;
+width: 100%;
 @media(max-width: 768px){
 height: 90vh;
 }
@@ -26,7 +27,7 @@ width: 100%;
 ${mainPadding};
 @media(max-width: 768px){
   flex-direction: column;
-  justify-content: center;
+  //justify-content: center;
 }
 `
 
@@ -58,8 +59,7 @@ align-items: center;
 justify-content: center;
 flex-direction: column;
 height: 372px;
-${mainPadding};
-
+//width: 100%;
 @media(max-width: 1280px){
   height: 250px;
 }
@@ -75,6 +75,9 @@ overflow: hidden;
 height: 100%;
 `
 
+const ContactWrapper = styled.div`
+${mainPadding};
+`
 
 export default class Home extends React.Component {
 
@@ -97,7 +100,9 @@ export default class Home extends React.Component {
                 <Waves/>
             </Root>
             <ContactForm>
-                <GetContactField title="Получить бизнес-план"/>
+                <ContactWrapper>
+                    <GetContactField title="Получить бизнес-план"/>
+                </ContactWrapper>
             </ContactForm>
         </>;
     }
