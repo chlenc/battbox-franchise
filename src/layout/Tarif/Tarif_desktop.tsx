@@ -1,9 +1,8 @@
 /** @jsx jsx */
 import React from "react";
 import styled from "@emotion/styled";
-import {colors, fonts, gotham, gotham_bold, mainPadding} from "@src/vars";
+import {colors, fonts,  mainPadding} from "@src/vars";
 import {css, jsx} from "@emotion/core";
-import ScrollBar from 'react-perfect-scrollbar'
 
 import black from './black.svg'
 import simple from './simple.svg'
@@ -54,6 +53,11 @@ ${mainPadding};
 @media (max-width: 1680px) {
       font-size: 18px;
       line-height: 22px;      
+}
+@media (max-width: 1180px) {
+      font-size: 14px;
+      line-height: 22px;   
+      padding-bottom: 64px;
 }
 color: #949494;
 padding-bottom: 54px;

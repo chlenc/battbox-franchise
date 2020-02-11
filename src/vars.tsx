@@ -210,8 +210,8 @@ export const fonts = {
   @media (max-width: 480px) {
     font-size: 30px;
   }
-  @media (max-width: 410px) {
-    font-size: 26px;
+  @media (max-width: 415px) {
+    font-size: 28px;
   }
   @media (max-width: 375px) {
     font-size: 30px;
@@ -566,18 +566,14 @@ padding-right:  170px;
 `
 
 export const fullScreen = css`
-padding-left:  170px;
-padding-right:  170px;
+width: calc(100% - 340px);
 @media(max-width: 1280px){
-  padding-left: 110px;
-  padding-right: 110px;
+  width: calc(100% - 220px);
 }
 @media(max-width: 768px){
-  padding-left: 60px;
-  padding-right:60px;
+  width: calc(100% - 120px);
 }
 @media(max-width: 375px){
-  padding-left: 24px;
-  padding-right:24px;
+  width: calc(100% - 48px);
 }
 `

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import {colors, fonts, gotham, gotham_bold, gotham_light, mainPadding} from "@src/vars";
+import {colors, fonts, fullScreen, gotham, gotham_bold, gotham_light, mainPadding} from "@src/vars";
 import Waves from "@src/layout/Home/Waves";
 import Bubbles from "@src/layout/Home/Bubbles";
 import Battery from "@src/layout/Home/Battery";
@@ -77,6 +77,8 @@ height: 100%;
 
 const ContactWrapper = styled.div`
 ${mainPadding};
+${fullScreen};
+
 `
 
 export default class Home extends React.Component {
